@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour {
 
 	public float LevelRightBound = 2, LevelLeftBound = -4;
+
+	public bool playing = false;
 
 	List<PlanetScript> planetList = new List<PlanetScript>();
 
@@ -14,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		PlanetScript[] planets = FindObjectsOfType<PlanetScript> ();
 		planetList.AddRange (planets);
+		Pause ();
 	}
 	
 	// Update is called once per frame
@@ -27,17 +31,27 @@ public class GameManager : MonoBehaviour {
 
 
 	public void Play(){
-		//TODO
+		if (playing)
+			return;
+		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
+			m.StartPlay ();
+		}
+		playing = true;
 	}
 
 	public void Pause(){
-		//TODO
+		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
+			m.InitPlay ();
+		}
+		playing = false;
 	}
 
 	public void Restart(){
-		//TODO
+		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
+			m.ResetPlay ();
+		}
+		Pause ();
 	}
-
 
 
 	void OnDrawGizmos(){

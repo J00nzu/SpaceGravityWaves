@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteoritLaunch : MonoBehaviour {
-
-
-
-
+public class MeteoritLaunch : DynamicObject {
 
 	public float angle;
 
@@ -23,7 +19,7 @@ public class MeteoritLaunch : MonoBehaviour {
 
 	}
 
-	void StartPlay(){
+	protected override void PlayPressed(){
 		StartForce ();
 	}
 	
@@ -41,7 +37,6 @@ public class MeteoritLaunch : MonoBehaviour {
 
 		//(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle));
 		body.AddForce (dir*meteoritForce);
-
 	}
 
 }
