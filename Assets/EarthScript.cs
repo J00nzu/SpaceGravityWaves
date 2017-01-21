@@ -18,7 +18,25 @@ public class EarthScript : MonoBehaviour {
 		if(other.gameObject.tag == "Player"){
 			Debug.Log ("Osu Maahan");
 			gm.Victory ();
+		}
+	}
 
+	public void Explode(){
+		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
+		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+
+
+		if (exp != null) {
+			exp.Play();
+		}
+
+		if (sprite != null) {
+			sprite.enabled = false;
+		}
+
+		if (coll != null) {
+			coll.enabled = false;
 		}
 	}
 }
