@@ -29,4 +29,22 @@ public abstract class DynamicObject : MonoBehaviour {
 	}
 
 	protected abstract void PlayPressed ();
+
+	public void Explode(){
+		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
+		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+
+		if (exp != null) {
+			exp.Play();
+		}
+
+		if (sprite != null) {
+			sprite.enabled = false;
+		}
+
+		if (coll != null) {
+			coll.enabled = false;
+		}
+	}
 }
