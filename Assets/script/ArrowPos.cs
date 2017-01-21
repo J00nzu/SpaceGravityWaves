@@ -6,18 +6,29 @@ using UnityEngine;
 
 public class ArrowPos : MonoBehaviour {
 	MeteoritLaunch meteorit;
-
+	GameManager GM;
+	SpriteRenderer sprite;
 
 	// Use this for initialization
 	void Start () {
 		meteorit = FindObjectOfType<MeteoritLaunch> ();
-
+		GM = FindObjectOfType<GameManager>();
+		sprite = this.GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (meteorit != null) {
+			this.transform.position = meteorit.transform.position;
+			this.transform.rotation = Quaternion.Euler (0, 0, meteorit.angle);
+		}
 
-		this.transform.position = meteorit.transform.position;
-		this.transform.rotation = Quaternion.Euler(0,0,meteorit.angle) ;
+		if (GM != null) {
+			if (GM.playing && sprite.enabled) {
+				sprite.enabled = false;
+			}else if(!GM.playing && !sprite.enabled){
+				sprite.enabled = true;
+			}
+		}
 	}
 }
