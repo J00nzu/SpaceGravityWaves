@@ -15,11 +15,15 @@ public class GameManager : MonoBehaviour {
 
 	public bool Restarting = false;
 
+	Statistic point;
+
 	List<PlanetScript> planetList = new List<PlanetScript>();
 
 
 	// Use this for initialization
 	void Start () {
+		
+		point = FindObjectOfType<Statistic> ();
 		PlanetScript[] planets = FindObjectsOfType<PlanetScript> ();
 		planetList.AddRange (planets);
 		Pause ();
@@ -52,6 +56,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Restart(){
+		point.deadpoint++;
+		Debug.Log ("Dead: "+ point.deadpoint + " Kills: "+ point.earthpoint);
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
 			m.ResetPlay ();
 		}
@@ -60,6 +66,7 @@ public class GameManager : MonoBehaviour {
 
 	public void Dead(){
 		if (!Restarting) {
+			
 			Restarting = true;
 			StartCoroutine ("WaitRestart");
 		}
@@ -68,6 +75,8 @@ public class GameManager : MonoBehaviour {
 	public void Victory(){
 		
 		if (!NextLevel) {
+			point.earthpoint++;
+			Debug.Log ("Dead: "+ point.deadpoint + " Kills: "+ point.earthpoint);
 			NextLevel = true;
 			StartCoroutine ("WaitForNextLevel");
 
