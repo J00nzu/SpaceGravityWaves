@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (WaittingTime);
 		Debug.Log ("Victory");
 		NextLevel = false;
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+
 
 	}
 
