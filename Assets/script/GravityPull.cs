@@ -12,6 +12,8 @@ public class GravityPull : MonoBehaviour {
 
 	public float Mass_1;
 
+
+
 	Rigidbody2D body;
 	 
 	//private float d;
@@ -23,10 +25,12 @@ public class GravityPull : MonoBehaviour {
 	void Start () {
 		body = GetComponent<Rigidbody2D> ();
 		GM = FindObjectOfType<GameManager> ();
+
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		ForceCalc ();
 	}
 
@@ -48,6 +52,7 @@ public class GravityPull : MonoBehaviour {
 
 			
 	}
+
 
 
 }
