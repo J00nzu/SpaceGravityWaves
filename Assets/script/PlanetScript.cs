@@ -22,4 +22,16 @@ public class PlanetScript : MonoBehaviour {
 		this.transform.position = new Vector3 (x, y, z);
 	}
 
+	void OnCollisionEnter2D(Collision2D other){
+
+		if(other.gameObject.tag == "Player"){
+
+
+				Debug.Log ("Osu Planettaan");
+				GM.Dead ();
+
+
+		}
+	}
+
 }

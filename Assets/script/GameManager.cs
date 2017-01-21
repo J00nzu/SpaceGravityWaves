@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour {
 	public float LevelRightBound = 2, LevelLeftBound = -4;
 
 	public bool playing = false;
+	public int WaittingTime = 1;
+
+	public bool Restarting = false;
 
 	List<PlanetScript> planetList = new List<PlanetScript>();
 
@@ -52,6 +55,35 @@ public class GameManager : MonoBehaviour {
 		}
 		Pause ();
 	}
+
+	public void Dead(){
+		if (!Restarting) {
+			Restarting = true;
+			StartCoroutine ("WaitRestart");
+		}
+	}
+
+	public void Victory(){
+
+		//TODO amir
+	}
+
+
+
+
+	 IEnumerator WaitRestart(){
+
+
+
+		yield return new WaitForSeconds (WaittingTime);
+		Restart ();
+		Restarting = false;
+	}
+
+
+
+
+
 
 
 	void OnDrawGizmos(){
