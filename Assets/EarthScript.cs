@@ -13,4 +13,10 @@ public class EarthScript : MonoBehaviour {
 	void Update () {
 		
 	}
+	void OnCollisionEnter2D(Collision2D other){
+
+		if(other.gameObject.tag == "Player"){
+			Debug.Log ("Osu Maahan");
+		}
+	}
 }
