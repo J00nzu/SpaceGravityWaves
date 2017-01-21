@@ -38,8 +38,16 @@ public abstract class DynamicObject : MonoBehaviour {
 
 		this.transform.position = SavePos;
 
+		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
 
+		if (sprite != null) {
+			sprite.enabled = true;
+		}
 
+		if (coll != null) {
+			coll.enabled = true;
+		}
 	}
 
 	protected abstract void PlayPressed ();
@@ -48,6 +56,8 @@ public abstract class DynamicObject : MonoBehaviour {
 		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
+
 
 		if (exp != null) {
 			exp.Play();
@@ -60,5 +70,10 @@ public abstract class DynamicObject : MonoBehaviour {
 		if (coll != null) {
 			coll.enabled = false;
 		}
+
+		if (rig != null) {
+			rig.velocity = Vector2.zero;
+		}
+
 	}
 }

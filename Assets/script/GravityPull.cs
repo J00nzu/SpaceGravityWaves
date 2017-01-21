@@ -8,7 +8,8 @@ public class GravityPull : MonoBehaviour {
 
 
 
-	public float gravity;
+	float gravity = 5;
+	float gravityexp = 1.3f;
 
 	public float Mass_1;
 
@@ -36,21 +37,18 @@ public class GravityPull : MonoBehaviour {
 
 	private void ForceCalc(){
 		
+		if (!GM.Restarting && GM.playing) {
+			foreach (PlanetScript planet in GM.GetAllPlanets()) {
+				Vector2 dir = planet.transform.position - this.transform.position;
+				float force;
+				float distance = dir.magnitude;
+				dir = dir.normalized;
+				force = (Mass_1 * gravity * planet.mass) / Mathf.Pow (distance, gravityexp);
+				body.AddForce (dir * force);
+			}
 
-		foreach(PlanetScript planet in GM.GetAllPlanets())
-		{
-			Vector2 dir = planet.transform.position - this.transform.position;
-			float force;
-			float distance = dir.magnitude;
-			dir = dir.normalized;
-			force = (Mass_1 * gravity * planet.mass )/ distance;
-			body.AddForce (dir*force);
 		}
-			
-		
-
-
-			
+	
 	}
 
 
