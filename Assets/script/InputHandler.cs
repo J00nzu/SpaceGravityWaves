@@ -8,6 +8,10 @@ public class InputHandler : MonoBehaviour {
 	PlanetScript dragged = null;
 	Vector3 offset;
 
+	public bool IsPlanetDragged(){
+		return dragged != null;
+	}
+
 
 
 	// Use this for initialization
