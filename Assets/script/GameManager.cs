@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour {
 			Restarting = true;
 			StartCoroutine ("WaitRestart");
 			FindObjectOfType<MeteorScript> ().Explode ();
+
+			JukeboxScript.PlayExplosion2 ();
 		}
 	}
 
@@ -82,6 +84,9 @@ public class GameManager : MonoBehaviour {
 			StartCoroutine ("WaitForNextLevel");
 			FindObjectOfType<MeteorScript> ().Explode ();
 			FindObjectOfType<EarthScript> ().Explode ();
+
+			JukeboxScript.PlayExplosion1 ();
+
 		}
 
 
