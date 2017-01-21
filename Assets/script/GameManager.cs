@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour {
 		if (!Restarting) {
 			Restarting = true;
 			StartCoroutine ("WaitRestart");
+			FindObjectOfType<MeteorScript> ().Explode ();
 		}
 	}
 
@@ -68,13 +69,7 @@ public class GameManager : MonoBehaviour {
 		//TODO amir
 	}
 
-
-
-
 	 IEnumerator WaitRestart(){
-
-
-
 		yield return new WaitForSeconds (WaittingTime);
 		Restart ();
 		Restarting = false;

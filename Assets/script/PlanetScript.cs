@@ -25,12 +25,8 @@ public class PlanetScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 
 		if(other.gameObject.tag == "Player"){
-
-
-				Debug.Log ("Osu Planettaan");
-				GM.Dead ();
-
-
+			Debug.Log ("Osu Planettaan");
+			GM.Dead ();
 		}
 	}
 

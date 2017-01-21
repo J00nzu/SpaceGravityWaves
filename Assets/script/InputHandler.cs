@@ -19,10 +19,11 @@ public class InputHandler : MonoBehaviour {
 	void Update () {
 		//KEYBOARD INPUT
 		if(Input.GetKeyDown(KeyCode.Space)){
-			GM.Play ();
-		}
-		if(Input.GetKeyDown(KeyCode.R)){
-			GM.Restart ();
+			if (GM.playing && !GM.Restarting) {
+				GM.Restart ();
+			} else {
+				GM.Play ();
+			}
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit ();

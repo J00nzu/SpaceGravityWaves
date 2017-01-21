@@ -5,13 +5,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 
 public class ArrowPos : MonoBehaviour {
-	MeteoritLaunch meteorit;
+	MeteorScript meteorit;
 	GameManager GM;
 	SpriteRenderer sprite;
 
 	// Use this for initialization
 	void Start () {
-		meteorit = FindObjectOfType<MeteoritLaunch> ();
+		meteorit = FindObjectOfType<MeteorScript> ();
 		GM = FindObjectOfType<GameManager>();
 		sprite = this.GetComponent<SpriteRenderer> ();
 	}

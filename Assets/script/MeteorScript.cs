@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteoritLaunch : DynamicObject {
+public class MeteorScript : DynamicObject {
 
 	public float angle;
 
