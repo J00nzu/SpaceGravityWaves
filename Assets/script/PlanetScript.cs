@@ -22,4 +22,11 @@ public class PlanetScript : MonoBehaviour {
 		this.transform.position = new Vector3 (x, y, z);
 	}
 
+	void OnCollider2DEntry(Collider2D other){
+
+		if(other.gameObject.tag == "Player"){
+			Debug.Log ("Osu Planettaan");
+		}
+	}
+
 }
