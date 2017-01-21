@@ -62,8 +62,6 @@ public class GameManager : MonoBehaviour {
 		if (!Restarting) {
 			Restarting = true;
 			StartCoroutine ("WaitRestart");
-			FindObjectOfType<MeteorScript> ().Explode ();
-
 		}
 	}
 
@@ -72,20 +70,27 @@ public class GameManager : MonoBehaviour {
 		if (!NextLevel) {
 			NextLevel = true;
 			StartCoroutine ("WaitForNextLevel");
-			FindObjectOfType<MeteorScript> ().Explode ();
-			FindObjectOfType<EarthScript> ().Explode ();
+
 		}
 
 
 
 	}
 
+
 	IEnumerator WaitForNextLevel(){
 		yield return new WaitForSeconds (WaittingTime);
 		Debug.Log ("Victory");
 		NextLevel = false;
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+
+
 	}
+
 	 IEnumerator WaitRestart(){
+
+
+
 		yield return new WaitForSeconds (WaittingTime);
 		Restart ();
 		Restarting = false;
