@@ -10,4 +10,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/amirTestscaen.unity
   - enabled: 1
+    path: Assets/Levelit/Level1.unity
+  - enabled: 1
     path: Assets/Levelit/Level2.unity
