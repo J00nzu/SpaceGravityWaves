@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 	public float LevelRightBound = 2, LevelLeftBound = -4;
 
 	public bool playing = false;
+	public bool NextLevel = false;
+
 	public int WaittingTime = 1;
 
 	public bool Restarting = false;
@@ -64,12 +66,24 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Victory(){
+		
+		if (!NextLevel) {
+			NextLevel = true;
+			StartCoroutine ("WaitForNextLevel");
 
-		//TODO amir
+		}
+
+
+
 	}
 
 
+	IEnumerator WaitForNextLevel(){
+		yield return new WaitForSeconds (WaittingTime);
+		Debug.Log ("Victory");
+		NextLevel = false;
 
+	}
 
 	 IEnumerator WaitRestart(){
 
