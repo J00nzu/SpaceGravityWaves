@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteoritLun : MonoBehaviour {
+public class MeteoritLaunch : MonoBehaviour {
 
 
 
@@ -20,6 +20,10 @@ public class MeteoritLun : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		body = GetComponent<Rigidbody2D> ();
+
+	}
+
+	void StartPlay(){
 		StartForce ();
 	}
 	
