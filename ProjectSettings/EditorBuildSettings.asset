@@ -6,8 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/JTestScene.unity
+    path: Assets/Levelit/Menu.unity
   - enabled: 1
+    path: Assets/Levelit/Credits.unity
+  - enabled: 0
+    path: Assets/JTestScene.unity
+  - enabled: 0
     path: Assets/amirTestscaen.unity
   - enabled: 1
     path: Assets/Levelit/Level1.unity
@@ -15,7 +19,3 @@ EditorBuildSettings:
     path: Assets/Levelit/Level2.unity
   - enabled: 1
     path: Assets/Levelit/Level3.unity
-  - enabled: 1
-    path: Assets/Levelit/Menu.unity
-  - enabled: 1
-    path: Assets/Levelit/Credits.unity

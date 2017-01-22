@@ -36,6 +36,6 @@ public class MenuScript : MonoBehaviour {
 
 	void Credit(){
 		Debug.Log ("credits");
-		SceneManager.LoadScene (6);
+		SceneManager.LoadScene (1);
 	}
 }

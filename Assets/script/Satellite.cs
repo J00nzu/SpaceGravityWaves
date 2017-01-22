@@ -16,7 +16,7 @@ public class Satellite : MonoBehaviour {
 	void Update () {
 
 		if(SatelitCount == SatelitSize)
-
+			;
 	}
 
 }
