@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class EarthScript : MonoBehaviour {
 	GameManager gm;
+
+	List<GameObject> explo = new List<GameObject> ();
 	// Use this for initialization
 	void Start () {
 		gm = FindObjectOfType<GameManager> ();
+
+		for (int i = 0; i < 6; i++) {
+			Transform ct = transform.Find ("ex" + i);
+			if (ct != null) {
+				explo.Add (ct.gameObject);
+				ct.gameObject.SetActive (false);
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -28,7 +38,7 @@ public class EarthScript : MonoBehaviour {
 
 
 		if (exp != null) {
-			exp.Play();
+			//exp.Play();
 		}
 
 		if (sprite != null) {
@@ -37,6 +47,18 @@ public class EarthScript : MonoBehaviour {
 
 		if (coll != null) {
 			coll.enabled = false;
+		}
+
+		foreach(GameObject go in explo){
+			go.SetActive (true);
+			Rigidbody2D goRig = go.GetComponent<Rigidbody2D> ();
+			Vector2 dir = go.transform.localPosition;
+			dir = dir.normalized;
+			go.transform.parent = this.transform.parent;
+
+
+			goRig.velocity =  (dir * 0.5f);
+			goRig.angularVelocity = Random.value * 180 - 90;
 		}
 	}
 }

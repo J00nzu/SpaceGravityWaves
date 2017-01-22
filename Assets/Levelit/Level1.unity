@@ -479,15 +479,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114657670185976980, guid: eb02a143decd5c44abfe1aa7f8617f8a,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 0.147
-      objectReference: {fileID: 0}
-    - target: {fileID: 114038016343014186, guid: eb02a143decd5c44abfe1aa7f8617f8a,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 0.147
+    - target: {fileID: 1763944173503094, guid: eb02a143decd5c44abfe1aa7f8617f8a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb02a143decd5c44abfe1aa7f8617f8a, type: 2}
@@ -562,7 +556,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4783267850453188, guid: 9b8c2b0ddaf902e43a29d576e2513c8d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4783267850453188, guid: 9b8c2b0ddaf902e43a29d576e2513c8d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -778,7 +772,12 @@ Prefab:
     - target: {fileID: 212620357775816798, guid: f104714464d291e48a581ee3257b6334,
         type: 2}
       propertyPath: m_Color.a
-      value: 0.469
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212620357775816798, guid: f104714464d291e48a581ee3257b6334,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f104714464d291e48a581ee3257b6334, type: 2}

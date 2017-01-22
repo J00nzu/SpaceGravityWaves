@@ -5,8 +5,10 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour {
 
 	GameManager GM;
+	UIScript UI;
 	PlanetScript dragged = null;
 	Vector3 offset;
+	bool firstPress = true;
 
 	public bool IsPlanetDragged(){
 		return dragged != null;
@@ -17,10 +19,27 @@ public class InputHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GM = FindObjectOfType<GameManager> ();
+		UI = FindObjectOfType<UIScript> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (firstPress) {
+			if (UI == null) {
+				firstPress = false;
+				return;
+			}
+				
+
+			if(Input.GetKeyDown(KeyCode.Space) || !UI.HasTutorial()){
+				UI.HideTutorial ();
+				firstPress = false;
+			}
+
+			return;
+		}
+
+
 		//KEYBOARD INPUT
 		if(Input.GetKeyDown(KeyCode.Space)){
 			if (GM.playing && !GM.Restarting) {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour {
 
 	Image left, right;
+	Image tutorial, levelName;
 	InputHandler input;
 	GameManager GM;
 
@@ -22,13 +23,17 @@ public class UIScript : MonoBehaviour {
 		left = transform.Find ("Left").GetComponent<Image>();
 		right = transform.Find ("Right").GetComponent<Image>();
 
+		tutorial = transform.Find ("Tutorial").GetComponent<Image>();
+		levelName = transform.Find ("LevelName").GetComponent<Image>();
+
 		left.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 		right.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 
 		input = FindObjectOfType<InputHandler> ();
 		GM = FindObjectOfType<GameManager> ();
 
-		StartCoroutine ("FadeColor");
+		StartCoroutine ("FadeSides");
+		StartCoroutine ("FadeLevelName");
 	}
 	
 	// Update is called once per frame
@@ -36,7 +41,43 @@ public class UIScript : MonoBehaviour {
 		
 	}
 
-	IEnumerator FadeColor(){
+	public void HideTutorial(){
+		StartCoroutine ("FadeTutorial");
+	}
+
+	public bool HasTutorial(){
+		return tutorial != null;
+	}
+
+	IEnumerator FadeLevelName(){
+		levelName.color = new Color (1, 1, 1, 1);
+
+		yield return new WaitForSeconds (2);
+		float a = 1;
+
+		while (a > 0) {
+			levelName.color = new Color (1, 1, 1, a);
+			a -= 0.01f;
+			yield return null;
+		}
+		levelName.enabled = false;
+	}
+
+	IEnumerator FadeTutorial(){
+		float a = 1;
+
+		while (a > 0) {
+			tutorial.color = new Color (1, 1, 1, a);
+			a -= 0.05f;
+			yield return null;
+		}
+
+		tutorial.enabled = false;
+
+	}
+
+
+	IEnumerator FadeSides(){
 		while (true) {
 			if (input.IsPlanetDragged ()) {
 				if (LRcurrAlpha < LRmaxAlpha) {

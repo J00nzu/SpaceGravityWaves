@@ -30,11 +30,15 @@ public class JukeboxScript : MonoBehaviour {
 	void FixedUpdate () {
 		float closestDistance = 999;
 
-		foreach (PlanetScript p in GM.GetAllPlanets()) {
-			float dist = (p.transform.position - meteor.transform.position).magnitude;
+		if (meteor != null && GM != null) {
+			foreach (PlanetScript p in GM.GetAllPlanets()) {
+				if (p != null) {
+					float dist = (p.transform.position - meteor.transform.position).magnitude;
 
-			if (dist < closestDistance) {
-				closestDistance = dist;
+					if (dist < closestDistance) {
+						closestDistance = dist;
+					}
+				}
 			}
 		}
 
