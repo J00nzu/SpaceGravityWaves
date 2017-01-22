@@ -5,7 +5,7 @@ using UnityEngine;
 public class Satellite : MonoBehaviour {
 	public int SatelitCount = 0;
 
-	public bool AllSatelliteDestroied;
+	public bool AllSatelliteDestroied = false;
 	int SatelitSize;
 	// Use this for initialization
 	void Start () {
@@ -15,8 +15,12 @@ public class Satellite : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(SatelitCount == SatelitSize)
+		if (SatelitCount == SatelitSize) {
+			AllSatelliteDestroied = true;
 
+		}
+				
+	}
 	}
 
-}
+
