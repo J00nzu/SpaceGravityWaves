@@ -11,8 +11,11 @@ public class JukeboxScript : MonoBehaviour {
 
 
 
+
 	// Use this for initialization
 	void Start () {
+
+
 		music = transform.Find ("Music").GetComponent<AudioSource> ();
 		hit1 = transform.Find ("Hit1").GetComponent<AudioSource> ();
 		hit2 = transform.Find ("Hit2").GetComponent<AudioSource> ();
@@ -21,7 +24,11 @@ public class JukeboxScript : MonoBehaviour {
 		GM = FindObjectOfType<GameManager> ();
 		meteor = FindObjectOfType<MeteorScript> ();
 
+
+
 		DontDestroyOnLoad (this);
+
+
 
 		instance = this;
 	}
