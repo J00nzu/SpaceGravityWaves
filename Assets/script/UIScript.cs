@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour {
 
 	Image left, right;
-	Image tutorial, levelName;
+	Image tutorial, levelName, victory;
 	InputHandler input;
 	GameManager GM;
 
@@ -25,6 +25,7 @@ public class UIScript : MonoBehaviour {
 
 		tutorial = transform.Find ("Tutorial").GetComponent<Image>();
 		levelName = transform.Find ("LevelName").GetComponent<Image>();
+		victory = transform.Find ("LevelVictory").GetComponent<Image>();
 
 		left.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 		right.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
@@ -47,6 +48,10 @@ public class UIScript : MonoBehaviour {
 
 	public bool HasTutorial(){
 		return tutorial != null;
+	}
+
+	public void ShowVictory(){
+		StartCoroutine ("FadeVictory");
 	}
 
 	IEnumerator FadeLevelName(){
@@ -74,6 +79,20 @@ public class UIScript : MonoBehaviour {
 
 		tutorial.enabled = false;
 
+	}
+
+	IEnumerator FadeVictory(){
+		float a = 0;
+
+		yield return new WaitForSeconds (2);
+
+		while (a < 1) {
+			victory.color = new Color (1, 1, 1, a);
+			a += 0.02f;
+			if (a > 1)
+				a = 1;
+			yield return null;
+		}
 	}
 
 

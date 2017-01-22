@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour {
 	public bool playing = false;
 	public bool NextLevel = false;
 
-	public int WaittingTime = 1;
+	float winWaitingTime = 6;
+	float loseWaitingTime = 1.5f;
+
+	UIScript UI;
+
 
 	public bool Restarting = false;
 
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour {
 		PlanetScript[] planets = FindObjectsOfType<PlanetScript> ();
 		planetList.AddRange (planets);
 		Pause ();
+		UI = FindObjectOfType<UIScript> ();
 	}
 	
 	// Update is called once per frame
@@ -86,7 +91,7 @@ public class GameManager : MonoBehaviour {
 			FindObjectOfType<EarthScript> ().Explode ();
 
 			JukeboxScript.PlayExplosion1 ();
-
+			UI.ShowVictory ();
 		}
 
 
@@ -95,19 +100,13 @@ public class GameManager : MonoBehaviour {
 
 
 	IEnumerator WaitForNextLevel(){
-		yield return new WaitForSeconds (WaittingTime);
-		Debug.Log ("Victory");
+		yield return new WaitForSeconds (winWaitingTime);
 		NextLevel = false;
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
-
-
 	}
 
 	 IEnumerator WaitRestart(){
-
-
-
-		yield return new WaitForSeconds (WaittingTime);
+		yield return new WaitForSeconds (loseWaitingTime);
 		Restart ();
 		Restarting = false;
 	}
