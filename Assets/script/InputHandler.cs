@@ -33,7 +33,6 @@ public class InputHandler : MonoBehaviour {
 				return;
 			}
 
-
 			if (Input.GetKeyDown (KeyCode.Space) || !UI.HasTutorial ()) {
 				UI.HideTutorial ();
 				firstPress = false;
