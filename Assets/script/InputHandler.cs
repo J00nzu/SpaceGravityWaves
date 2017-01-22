@@ -7,6 +7,9 @@ public class InputHandler : MonoBehaviour {
 	GameManager GM;
 	PlanetScript dragged = null;
 	Vector3 offset;
+	UIScript UI;
+	bool firstPress = true;
+
 
 
 
@@ -18,11 +21,29 @@ public class InputHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (firstPress) {
+			if (UI == null) {
+				firstPress = false;
+				return;
+			}
+
+
+			if (Input.GetKeyDown (KeyCode.Space) || !UI.HasTutorial ()) {
+				UI.HideTutorial ();
+				firstPress = false;
+			}
+
+			return;
+
+		}
+		Debug.Log (firstPress);
+
 		//KEYBOARD INPUT
 		if(Input.GetKeyDown(KeyCode.Space)){
 			if (GM.playing && !GM.Restarting) {

@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Levelit/Level2.unity
   - enabled: 1
     path: Assets/Levelit/Level3.unity
+  - enabled: 1
+    path: Assets/Levelit/FinalScene.unity
