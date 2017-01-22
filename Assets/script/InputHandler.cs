@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class InputHandler : MonoBehaviour {
 
 	GameManager GM;
 	PlanetScript dragged = null;
 	Vector3 offset;
+
+
 
 	public bool IsPlanetDragged(){
 		return dragged != null;
@@ -30,7 +32,9 @@ public class InputHandler : MonoBehaviour {
 			}
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Application.Quit ();
+
+
+			//SceneManager.LoadScene (4);
 		}
 
 
