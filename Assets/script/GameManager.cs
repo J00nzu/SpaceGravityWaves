@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Restart(){
-		point.deadpoint++;
-		Debug.Log ("Dead: "+ point.deadpoint + " Kills: "+ point.earthpoint);
+		if(point!=null)
+			point.deadpoint++;
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
 			m.ResetPlay ();
 		}
@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviour {
 	public void Victory(){
 		
 		if (!NextLevel) {
-			point.earthpoint++;
-			Debug.Log ("Dead: "+ point.deadpoint + " Kills: "+ point.earthpoint);
+			if(point!=null)
+				point.earthpoint++;
 			NextLevel = true;
 			StartCoroutine ("WaitForNextLevel");
 			FindObjectOfType<MeteorScript> ().Explode ();
