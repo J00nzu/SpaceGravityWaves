@@ -5,6 +5,7 @@ using UnityEngine;
 public class Satellite : DynamicObject {
 
 	List<GameObject> explo = new List<GameObject> ();
+	SpriteRenderer biimiSprite;
 
 	void Start(){
 
@@ -14,6 +15,11 @@ public class Satellite : DynamicObject {
 				explo.Add (ct.gameObject);
 				ct.gameObject.SetActive (false);
 			}
+		}
+
+		Transform bgo = transform.Find ("biimii");
+		if(bgo != null){
+			biimiSprite = bgo.GetComponent<SpriteRenderer> ();
 		}
 	}
 
@@ -33,6 +39,34 @@ public class Satellite : DynamicObject {
 		}
 	}
 
+	public new void ResetPlay() {
+		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
+
+		if (rig != null) {
+			rig.velocity = Vector2.zero;
+			rig.angularVelocity = 0;
+			this.transform.rotation = Quaternion.Euler (Vector3.zero);
+		}
+
+
+		this.transform.position = SavePos;
+
+		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+
+		if (sprite != null) {
+			sprite.enabled = true;
+		}
+
+		if (coll != null) {
+			coll.enabled = true;
+		}
+
+		if (biimiSprite != null) {
+			biimiSprite.enabled = true;
+		}
+	}
+
 	new void Explode(){
 		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
@@ -49,6 +83,10 @@ public class Satellite : DynamicObject {
 
 		if (coll != null) {
 			coll.enabled = false;
+		}
+
+		if (biimiSprite != null) {
+			biimiSprite.enabled = false;
 		}
 
 		List<GameObject> explo2 = new List<GameObject>();

@@ -6,7 +6,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	RigidbodyType2D initialType;
 
-	Vector3 SavePos;
+	protected Vector3 SavePos;
 
 	public void StartPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
