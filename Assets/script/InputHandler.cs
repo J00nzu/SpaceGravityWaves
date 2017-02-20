@@ -14,7 +14,6 @@ public class InputHandler : MonoBehaviour {
 
 
 
-
 	public bool IsPlanetDragged(){
 		return dragged != null;
 	}
@@ -23,6 +22,10 @@ public class InputHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
+	
+
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
 	}
@@ -58,6 +61,8 @@ public class InputHandler : MonoBehaviour {
 
 			SceneManager.LoadScene (0);
 		}
+
+
 
 
 
@@ -107,7 +112,9 @@ public class InputHandler : MonoBehaviour {
 
 
 	public void SpaceBarButton(){
-		
+		Debug.Log ("button");
+		UI.HideTutorial ();
+		firstPress = false;
 			if (GM.playing && !GM.Restarting) {
 				GM.Restart ();
 			} else {
