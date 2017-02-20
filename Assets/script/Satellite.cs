@@ -70,11 +70,12 @@ public class Satellite : DynamicObject {
 	new void Explode(){
 		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
-		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+		PolygonCollider2D coll = GetComponent<PolygonCollider2D> ();
 
 
 		if (exp != null) {
 			exp.Play();
+
 		}
 
 		if (sprite != null) {
