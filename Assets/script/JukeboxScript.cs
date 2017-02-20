@@ -15,6 +15,12 @@ public class JukeboxScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		DontDestroyOnLoad (this);
+
+		//if scene already has this object
+		if (FindObjectsOfType (GetType()).Length > 1) {
+			Destroy (gameObject);
+		}
 
 		music = transform.Find ("Music").GetComponent<AudioSource> ();
 		hit1 = transform.Find ("Hit1").GetComponent<AudioSource> ();
@@ -26,33 +32,35 @@ public class JukeboxScript : MonoBehaviour {
 
 
 
-		DontDestroyOnLoad (this);
-
-
-
 		instance = this;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		float closestDistance = 999;
+		float volume = 0;
 
-		if (meteor != null && GM != null) {
-			foreach (PlanetScript p in GM.GetAllPlanets()) {
-				if (p != null) {
-					float dist = (p.transform.position - meteor.transform.position).magnitude;
 
-					if (dist < closestDistance) {
-						closestDistance = dist;
+		if (!GM.Restarting) {
+			if (meteor != null && GM != null) {
+				foreach (PlanetScript p in GM.GetAllPlanets()) {
+					if (p != null) {
+						float dist = (p.transform.position - meteor.transform.position).magnitude;
+
+						if (dist < closestDistance) {
+							closestDistance = dist;
+						}
 					}
 				}
 			}
+			volume = 1 - (closestDistance / 5);
+
+			if (volume < 0) {
+				volume = 0;
+			}
 		}
 
-		float volume = 1 - (closestDistance / 5);
-		if (volume < 0) {
-			volume = 0;
-		}
+
 
 		gravity.volume = volume;
 	}
