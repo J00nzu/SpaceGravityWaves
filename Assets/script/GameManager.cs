@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 	public bool playing = false;
 	public bool NextLevel = false;
 
+
+
 	float winWaitingTime = 6;
 	float loseWaitingTime = 1.5f;
 

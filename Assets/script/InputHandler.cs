@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class InputHandler : MonoBehaviour {
 
 	GameManager GM;
@@ -58,6 +60,9 @@ public class InputHandler : MonoBehaviour {
 		}
 
 
+
+
+
 		//MOUSE INPUT
 		Vector3 Mp = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
@@ -98,5 +103,20 @@ public class InputHandler : MonoBehaviour {
 			Gizmos.color = Color.green;
 			Gizmos.DrawWireSphere (p.transform.position, p.GetComponent<SpriteRenderer> ().sprite.bounds.extents.y);
 		}
+	}
+
+
+	public void SpaceBarButton(){
+		
+			if (GM.playing && !GM.Restarting) {
+				GM.Restart ();
+			} else {
+				GM.Play ();
+			}
+
+	}
+
+	public void EscButton(){
+		SceneManager.LoadScene (0);
 	}
 }
