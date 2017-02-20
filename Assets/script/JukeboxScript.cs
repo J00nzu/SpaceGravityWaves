@@ -58,11 +58,13 @@ public class JukeboxScript : MonoBehaviour {
 	}
 
 	public static void PlayExplosion1(){
-		instance.hit1.Play ();
+		if(instance != null)
+			instance.hit1.Play ();
 	}
 
 	public static void PlayExplosion2(){
-		instance.hit2.Play ();
+		if(instance != null)
+			instance.hit2.Play ();
 	}
 
 

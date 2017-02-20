@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour {
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
 			m.ResetPlay ();
 		}
+		SatelliteCollider sc = FindObjectOfType<SatelliteCollider> ();
+		if (sc != null) {
+			sc.Reset ();
+		}
 		Pause ();
 	}
 

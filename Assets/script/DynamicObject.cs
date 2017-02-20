@@ -6,7 +6,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	RigidbodyType2D initialType;
 
-	Vector3 SavePos;
+	protected Vector3 SavePos;
 
 	public void StartPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
@@ -31,9 +31,11 @@ public abstract class DynamicObject : MonoBehaviour {
 	public void ResetPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
 
-		rig.velocity = Vector2.zero;
-		rig.angularVelocity = 0;
-		this.transform.rotation = Quaternion.Euler(Vector3.zero);
+		if (rig != null) {
+			rig.velocity = Vector2.zero;
+			rig.angularVelocity = 0;
+			this.transform.rotation = Quaternion.Euler (Vector3.zero);
+		}
 
 
 		this.transform.position = SavePos;
