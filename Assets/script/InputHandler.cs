@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour {
 	Vector3 offset;
 	UIScript UI;
 	bool firstPress = true;
+	bool inputCooldown;
+	float inputCooldownTime = 0.5f;
 
 
 
@@ -22,9 +24,6 @@ public class InputHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-
-	
 
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
@@ -46,15 +45,11 @@ public class InputHandler : MonoBehaviour {
 			return;
 
 		}
-		Debug.Log (firstPress);
 
 		//KEYBOARD INPUT
-		if(Input.GetKeyDown(KeyCode.Space)){
-			if (GM.playing && !GM.Restarting) {
-				GM.Restart ();
-			} else {
-				GM.Play ();
-			}
+		if(Input.GetKeyDown(KeyCode.Space) && !inputCooldown){
+			GM.PressButton1 ();
+			StartCoroutine ("InputCooldownWait");
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 
@@ -110,8 +105,11 @@ public class InputHandler : MonoBehaviour {
 		}
 	}
 
-
+	/**
+	 * TODO: Redo these two
+	 */
 	public void SpaceBarButton(){
+		
 		Debug.Log ("button");
 		UI.HideTutorial ();
 		firstPress = false;
@@ -120,10 +118,20 @@ public class InputHandler : MonoBehaviour {
 			} else {
 				GM.Play ();
 			}
+		
 
 	}
 
 	public void EscButton(){
 		SceneManager.LoadScene (0);
+	}
+	/**
+	 * End redo
+	 */
+
+	IEnumerator InputCooldownWait(){
+		inputCooldown = true;
+		yield return new WaitForSeconds (inputCooldownTime);
+		inputCooldown = false;
 	}
 }

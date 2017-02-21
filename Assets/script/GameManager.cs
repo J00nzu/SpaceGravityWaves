@@ -44,9 +44,24 @@ public class GameManager : MonoBehaviour {
 		return planetList;
 	}
 
+	/*
+	 * aka. spacebar
+	*/
+	public void PressButton1(){
+		Debug.Log ("PressButton1");
+		if (playing && !Restarting) {
+			Pause();
+			Restart ();
+		} else {
+			Play ();
+		}
+	}
 
 
 	public void Play(){
+		if (Restarting) {
+			Restart ();
+		}
 		if (playing)
 			return;
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
@@ -72,7 +87,7 @@ public class GameManager : MonoBehaviour {
 		if (sc != null) {
 			sc.Reset ();
 		}
-		Pause ();
+		Restarting = false;
 	}
 
 	public void Dead(){
@@ -84,6 +99,8 @@ public class GameManager : MonoBehaviour {
 
 			JukeboxScript.PlayExplosion2 ();
 		}
+		Pause ();
+
 	}
 
 	public void Victory(){
@@ -113,8 +130,9 @@ public class GameManager : MonoBehaviour {
 
 	 IEnumerator WaitRestart(){
 		yield return new WaitForSeconds (loseWaitingTime);
-		Restart ();
-		Restarting = false;
+		if (Restarting) {
+			Restart ();
+		}
 	}
 
 
