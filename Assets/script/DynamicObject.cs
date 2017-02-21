@@ -42,6 +42,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+		PolygonCollider2D coll2 = GetComponent<PolygonCollider2D> ();
 
 		if (sprite != null) {
 			sprite.enabled = true;
@@ -49,6 +50,9 @@ public abstract class DynamicObject : MonoBehaviour {
 
 		if (coll != null) {
 			coll.enabled = true;
+		}
+		if (coll2 != null) {
+			coll2.enabled = true;
 		}
 	}
 
@@ -58,6 +62,7 @@ public abstract class DynamicObject : MonoBehaviour {
 		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
+		PolygonCollider2D coll2 = GetComponent<PolygonCollider2D> ();
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
 
 
@@ -71,6 +76,9 @@ public abstract class DynamicObject : MonoBehaviour {
 
 		if (coll != null) {
 			coll.enabled = false;
+		}
+		if (coll2 != null) {
+			coll2.enabled = false;
 		}
 
 		if (rig != null) {

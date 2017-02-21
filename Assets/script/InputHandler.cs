@@ -48,13 +48,10 @@ public class InputHandler : MonoBehaviour {
 
 		//KEYBOARD INPUT
 		if(Input.GetKeyDown(KeyCode.Space) && !inputCooldown){
-			GM.PressButton1 ();
-			StartCoroutine ("InputCooldownWait");
+			SpaceBarButton();
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-
-
-			SceneManager.LoadScene (0);
+			EscButton();
 		}
 
 
@@ -111,14 +108,14 @@ public class InputHandler : MonoBehaviour {
 	public void SpaceBarButton(){
 		
 		Debug.Log ("button");
-		UI.HideTutorial ();
-		firstPress = false;
-			if (GM.playing && !GM.Restarting) {
-				GM.Restart ();
-			} else {
-				GM.Play ();
-			}
-		
+		if (firstPress) {
+			UI.HideTutorial ();
+			firstPress = false;
+		} else {
+			GM.PressButton1 ();
+			StartCoroutine ("InputCooldownWait");
+			
+		}
 
 	}
 
