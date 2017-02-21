@@ -16,7 +16,7 @@ public class UIScript : MonoBehaviour {
 
 	float waitTime = 1.0f/30;
 
-
+	public Button spacebar;
 
 	// Use this for initialization
 	void Start () {
@@ -115,4 +115,5 @@ public class UIScript : MonoBehaviour {
 			yield return null;
 		}
 	}
+
 }

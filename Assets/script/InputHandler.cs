@@ -113,14 +113,16 @@ public class InputHandler : MonoBehaviour {
 
 	public void SpaceBarButton(){
 		Debug.Log ("button");
-		UI.HideTutorial ();
-		firstPress = false;
+		if (firstPress) {
+			UI.HideTutorial ();
+			firstPress = false;
+		} else {
 			if (GM.playing && !GM.Restarting) {
 				GM.Restart ();
 			} else {
 				GM.Play ();
 			}
-
+		}
 	}
 
 	public void EscButton(){
