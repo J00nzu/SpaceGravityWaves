@@ -266,7 +266,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -435190766
+  randomSeed: 2068866218
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2924,6 +2924,12 @@ Prefab:
       propertyPath: m_Name
       value: earth
       objectReference: {fileID: 0}
+    - target: {fileID: 212071757107861050, guid: e8219b3b049be884882db2ecc8790757,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81ddcbcc51b418543bb6fffd0f20e5c1,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8219b3b049be884882db2ecc8790757, type: 2}
   m_IsPrefabParent: 0
@@ -3490,7 +3496,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 59994b25574de774bbb19ed4266d946d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81ddcbcc51b418543bb6fffd0f20e5c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
