@@ -59,7 +59,7 @@ public abstract class DynamicObject : MonoBehaviour {
 	protected abstract void PlayPressed ();
 
 	public void Explode(){
-		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
+		ParticleSystem[] exp = GetComponentsInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
 		PolygonCollider2D coll2 = GetComponent<PolygonCollider2D> ();
@@ -67,7 +67,8 @@ public abstract class DynamicObject : MonoBehaviour {
 
 
 		if (exp != null) {
-			exp.Play();
+			foreach(ParticleSystem psys in exp)
+				psys.Play();
 		}
 
 		if (sprite != null) {
