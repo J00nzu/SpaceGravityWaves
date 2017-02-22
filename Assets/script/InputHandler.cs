@@ -27,16 +27,19 @@ public class InputHandler : MonoBehaviour {
 
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
+		StartCoroutine ("StartCooldownWait");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (firstPress) {
 			if (UI == null) {
 				firstPress = false;
 				return;
 			}
-
+		}
+			/*
 			if (Input.GetKeyDown (KeyCode.Space) || !UI.HasTutorial ()) {
 				UI.HideTutorial ();
 				firstPress = false;
@@ -44,10 +47,10 @@ public class InputHandler : MonoBehaviour {
 
 			return;
 
-		}
-
+		} 
+*/
 		//KEYBOARD INPUT
-		if(Input.GetKeyDown(KeyCode.Space) && !inputCooldown){
+		if(Input.GetKeyDown(KeyCode.Space)/* && !inputCooldown */){
 			SpaceBarButton();
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -106,17 +109,17 @@ public class InputHandler : MonoBehaviour {
 	 * TODO: Redo these two
 	 */
 	public void SpaceBarButton(){
-		
-		Debug.Log ("button");
-		if (firstPress) {
-			UI.HideTutorial ();
-			firstPress = false;
-		} else {
-			GM.PressButton1 ();
-			StartCoroutine ("InputCooldownWait");
+		if (!inputCooldown) {
+			Debug.Log ("button");
+			if (firstPress) {
+				UI.HideTutorial ();
+				firstPress = false;
+			} else {
+				GM.PressButton1 ();
+				StartCoroutine ("InputCooldownWait");
 			
+			}
 		}
-
 	}
 
 	public void EscButton(){
@@ -131,4 +134,10 @@ public class InputHandler : MonoBehaviour {
 		yield return new WaitForSeconds (inputCooldownTime);
 		inputCooldown = false;
 	}
+	IEnumerator StartCooldownWait(){
+		inputCooldown = true;
+		yield return new WaitForSeconds (7.0f);
+		inputCooldown = false;
+	}
+
 }
