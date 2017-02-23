@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public bool playing = false;
 	public bool NextLevel = false;
 
+	InputHandler IHandler;
 
 
 	float winWaitingTime = 6;
@@ -23,12 +24,14 @@ public class GameManager : MonoBehaviour {
 
 	Statistic point;
 
+
+
 	List<PlanetScript> planetList = new List<PlanetScript>();
 
 
 	// Use this for initialization
 	void Start () {
-		
+		IHandler = FindObjectOfType<InputHandler> ();
 		point = FindObjectOfType<Statistic> ();
 		PlanetScript[] planets = FindObjectsOfType<PlanetScript> ();
 		planetList.AddRange (planets);
@@ -104,8 +107,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Victory(){
+
+		IHandler.GetCooldownWait ();
 		
 		if (!NextLevel) {
+
+
 			if(point!=null)
 				point.earthpoint++;
 			NextLevel = true;

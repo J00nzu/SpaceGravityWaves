@@ -30,6 +30,8 @@ public class UIScript : MonoBehaviour {
 		left.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 		right.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 
+
+
 		input = FindObjectOfType<InputHandler> ();
 		GM = FindObjectOfType<GameManager> ();
 
