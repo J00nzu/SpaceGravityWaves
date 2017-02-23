@@ -11,7 +11,6 @@ public class IndicatorScript : MonoBehaviour {
 	List<IndicatorChild> indList = new List<IndicatorChild> ();
 
 
-
 	// Use this for initialization
 	void Start () {
 		MeteorScript[] meteors = FindObjectsOfType<MeteorScript> ();
@@ -47,11 +46,13 @@ public class IndicatorScript : MonoBehaviour {
 			float verticalLow = Camera.main.ScreenToWorldPoint (Vector3.zero).y;
 			float horizontalLow = Camera.main.ScreenToWorldPoint (Vector3.zero).x;
 			float buffer = 0.3f;
-			if (
+			if ((
 				(target.transform.position.y < verticalLow - buffer) ||
 				(target.transform.position.y > verticalHigh + buffer) ||
 				(target.transform.position.x < horizontalLow - buffer) ||
-				(target.transform.position.x > horizontalHigh + buffer)) {
+				(target.transform.position.x > horizontalHigh + buffer)) &&
+				(target.isAlive())
+			) {
 				if (!indie.sprite.enabled) {
 					indie.sprite.enabled = true;
 				}

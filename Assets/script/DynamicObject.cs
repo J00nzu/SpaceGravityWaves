@@ -7,6 +7,7 @@ public abstract class DynamicObject : MonoBehaviour {
 	RigidbodyType2D initialType;
 
 	protected Vector3 SavePos;
+	protected bool Alive = true;
 
 	public void StartPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
@@ -30,6 +31,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	public void ResetPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
+		Alive = true;
 
 		if (rig != null) {
 			rig.velocity = Vector2.zero;
@@ -61,8 +63,8 @@ public abstract class DynamicObject : MonoBehaviour {
 	public void Explode(){
 		ParticleSystem[] exp = GetComponentsInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
-		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
-		PolygonCollider2D coll2 = GetComponent<PolygonCollider2D> ();
+		CircleCollider2D cColl = GetComponent<CircleCollider2D> ();
+		PolygonCollider2D pColl = GetComponent<PolygonCollider2D> ();
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
 
 
@@ -75,16 +77,21 @@ public abstract class DynamicObject : MonoBehaviour {
 			sprite.enabled = false;
 		}
 
-		if (coll != null) {
-			coll.enabled = false;
+		if (cColl != null) {
+			cColl.enabled = false;
 		}
-		if (coll2 != null) {
-			coll2.enabled = false;
+		if (pColl != null) {
+			pColl.enabled = false;
 		}
 
 		if (rig != null) {
 			rig.velocity = Vector2.zero;
 		}
 
+		Alive = false;
+	}
+
+	public bool isAlive(){
+		return Alive;
 	}
 }
