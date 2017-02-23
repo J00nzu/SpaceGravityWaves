@@ -5,11 +5,12 @@ using UnityEngine;
 public class EarthScript : MonoBehaviour {
 	GameManager gm;
 
+
 	List<GameObject> explo = new List<GameObject> ();
 	// Use this for initialization
 	void Start () {
 		gm = FindObjectOfType<GameManager> ();
-
+	
 		for (int i = 0; i < 6; i++) {
 			Transform ct = transform.Find ("ex" + i);
 			if (ct != null) {
@@ -27,6 +28,7 @@ public class EarthScript : MonoBehaviour {
 
 		if(other.gameObject.tag == "Player"){
 			Debug.Log ("Osu Maahan");
+
 			gm.Victory ();
 		}
 	}

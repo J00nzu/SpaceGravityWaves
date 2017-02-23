@@ -27,7 +27,7 @@ public class InputHandler : MonoBehaviour {
 
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
-		StartCoroutine ("StartCooldownWait");
+		GetCooldownWait ();
 	}
 	
 	// Update is called once per frame
@@ -129,6 +129,10 @@ public class InputHandler : MonoBehaviour {
 	 * End redo
 	 */
 
+	public void GetCooldownWait(){
+		StartCoroutine ("StartCooldownWait");
+	}
+
 	IEnumerator InputCooldownWait(){
 		inputCooldown = true;
 		yield return new WaitForSeconds (inputCooldownTime);
@@ -136,7 +140,7 @@ public class InputHandler : MonoBehaviour {
 	}
 	IEnumerator StartCooldownWait(){
 		inputCooldown = true;
-		yield return new WaitForSeconds (7.0f);
+		yield return new WaitForSeconds (5.0f);
 		inputCooldown = false;
 	}
 
