@@ -9,7 +9,7 @@ public class JukeboxScript : MonoBehaviour {
 	AudioSource music, hit1, hit2, gravity;
 	static JukeboxScript instance;
 
-
+	private float sfx = 0.5f;
 
 
 	// Use this for initialization
@@ -53,7 +53,7 @@ public class JukeboxScript : MonoBehaviour {
 					}
 				}
 			}
-			volume = 1 - (closestDistance / 5);
+			volume = this.sfx - (closestDistance / 5);
 
 			if (volume < 0) {
 				volume = 0;
@@ -62,7 +62,7 @@ public class JukeboxScript : MonoBehaviour {
 
 
 
-		gravity.volume = volume;
+		gravity.volume = volume ;
 	}
 
 	public static void PlayExplosion1(){
@@ -73,6 +73,17 @@ public class JukeboxScript : MonoBehaviour {
 	public static void PlayExplosion2(){
 		if(instance != null)
 			instance.hit2.Play ();
+	}
+
+	public void MusicSoundSlider(float a){
+		music.volume = a;
+	}
+
+	public void SfxSoundSlider(float a ){
+		this.sfx = a;
+		hit1.volume = this.sfx;
+		hit2.volume = this.sfx;
+		//gravity.volume = this.sfx;
 	}
 
 

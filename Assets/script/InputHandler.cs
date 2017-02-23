@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour {
 	bool inputCooldown;
 	float inputCooldownTime = 0.5f;
 
+	MenuPhone MP;
 
 
 	public bool IsPlanetDragged(){
@@ -24,7 +25,7 @@ public class InputHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		MP = FindObjectOfType<MenuPhone> ();
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
 		GetCooldownWait ();
@@ -72,16 +73,18 @@ public class InputHandler : MonoBehaviour {
 		if (!GM.playing) {
 
 			if (dragged == null) {
-				if (Input.GetMouseButton (0)) {
-					foreach (PlanetScript p in GM.GetAllPlanets()) {
-						float r = p.GetComponent<SpriteRenderer> ().sprite.bounds.extents.y;
-						Vector3 off = p.transform.position - new Vector3 (Mx, My, 0);
-						float dist = (off).magnitude;
+				if(!MP.MenuState){
+					if (Input.GetMouseButton (0)) {
+						foreach (PlanetScript p in GM.GetAllPlanets()) {
+							float r = p.GetComponent<SpriteRenderer> ().sprite.bounds.extents.y;
+							Vector3 off = p.transform.position - new Vector3 (Mx, My, 0);
+							float dist = (off).magnitude;
 
-						if (dist < r) {
-							this.offset = off;
-							dragged = p;
-							break;
+							if (dist < r) {
+								this.offset = off;
+								dragged = p;
+								break;
+							}
 						}
 					}
 				}
@@ -123,7 +126,8 @@ public class InputHandler : MonoBehaviour {
 	}
 
 	public void EscButton(){
-		SceneManager.LoadScene (0);
+		MP.OpenMenu ();
+		//SceneManager.LoadScene (0);
 	}
 	/**
 	 * End redo
