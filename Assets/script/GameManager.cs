@@ -121,8 +121,8 @@ public class GameManager : MonoBehaviour {
 
 	public void Victory(){
 
-		IHandler.GetCooldownWait ();
-		
+		IHandler.DeactivateInput ();
+
 		if (!NextLevel) {
 
 

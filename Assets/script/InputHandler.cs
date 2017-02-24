@@ -39,7 +39,6 @@ public class InputHandler : MonoBehaviour {
 		MP = FindObjectOfType<MenuPhone> ();
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
-		GetCooldownWait ();
 	}
 	
 	// Update is called once per frame
@@ -137,18 +136,9 @@ public class InputHandler : MonoBehaviour {
 		//SceneManager.LoadScene (0);
 	}
 
-	public void GetCooldownWait(){
-		StartCoroutine ("StartCooldownWait");
-	}
-
 	IEnumerator InputCooldownWait(){
 		inputCooldown = true;
 		yield return new WaitForSeconds (inputCooldownTime);
-		inputCooldown = false;
-	}
-	IEnumerator StartCooldownWait(){
-		inputCooldown = true;
-		yield return new WaitForSeconds (5.0f);
 		inputCooldown = false;
 	}
 

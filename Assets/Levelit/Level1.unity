@@ -537,8 +537,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -352, y: -0.003641}
-  m_SizeDelta: {x: 95, y: 450}
+  m_AnchoredPosition: {x: -348, y: 0.1905}
+  m_SizeDelta: {x: 104, y: 450.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211066840
 MonoBehaviour:
@@ -1250,8 +1250,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289, y: -0.14219}
-  m_SizeDelta: {x: 212, y: 449.99}
+  m_AnchoredPosition: {x: 295.83, y: -0.1349}
+  m_SizeDelta: {x: 225.65, y: 449.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520538376
 MonoBehaviour:
@@ -1635,11 +1635,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4305783042399640, guid: 658a57f5ed59b78459ce283eefb14063, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.02
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 4305783042399640, guid: 658a57f5ed59b78459ce283eefb14063, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4305783042399640, guid: 658a57f5ed59b78459ce283eefb14063, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1971,6 +1971,7 @@ GameObject:
   - component: {fileID: 927242776}
   - component: {fileID: 927242778}
   - component: {fileID: 927242777}
+  - component: {fileID: 927242779}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -2017,7 +2018,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4341e65294137fc4eb52763d28693222, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a91dc3ddfb3d9f54983cb8a883115e18, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2032,6 +2033,58 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 927242775}
+--- !u!114 &927242779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927242775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 927242777}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1298222621}
+        m_MethodName: SpaceBarButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &940856048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,7 +2127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: -115}
+  m_AnchoredPosition: {x: -7, y: -173}
   m_SizeDelta: {x: 825, y: 359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &940856050
@@ -2313,11 +2366,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4068332407709234, guid: a6879b4dd88357546882b802604d86f2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.24
+      value: -4.25
       objectReference: {fileID: 0}
     - target: {fileID: 4068332407709234, guid: a6879b4dd88357546882b802604d86f2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.32
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 4068332407709234, guid: a6879b4dd88357546882b802604d86f2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2522,14 +2575,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.503}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f57bc16f2c0576f4fbc94123ad8d895a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3247,7 +3300,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f2cf26e28d67aca4a9adfe7c3fc713c9,
+      objectReference: {fileID: 21300000, guid: 042a45c1ba2cd1441bb205ac9e0e8de6,
         type: 3}
     - target: {fileID: 114858438086981382, guid: 05e127e0322f02a409555c93a01de3eb,
         type: 2}
@@ -3383,8 +3436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380, y: -0.0018386999}
-  m_SizeDelta: {x: 40, y: 450}
+  m_AnchoredPosition: {x: -348, y: -0.0031508}
+  m_SizeDelta: {x: 104, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602591590
 MonoBehaviour:
@@ -3944,7 +3997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
