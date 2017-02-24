@@ -9,7 +9,8 @@ public class JukeboxScript : MonoBehaviour {
 	AudioSource music, hit1, hit2, gravity;
 	static JukeboxScript instance;
 
-	private float sfx = 0.5f;
+	private float sfxVol;
+	private float musicVol;
 
 
 	// Use this for initialization
@@ -30,15 +31,15 @@ public class JukeboxScript : MonoBehaviour {
 		GM = FindObjectOfType<GameManager> ();
 		meteor = FindObjectOfType<MeteorScript> ();
 
-
-
 		instance = this;
+
+		UpdateVolume ();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		float closestDistance = 999;
-		float volume = 0;
+		float gVolume = 0;
 
 
 		if (!GM.Restarting) {
@@ -53,16 +54,16 @@ public class JukeboxScript : MonoBehaviour {
 					}
 				}
 			}
-			volume = this.sfx - (closestDistance / 5);
+			gVolume = 1 - (closestDistance / 5);
 
-			if (volume < 0) {
-				volume = 0;
+			if (gVolume < 0) {
+				gVolume = 0;
 			}
 		}
 
 
 
-		gravity.volume = volume ;
+		gravity.volume = gVolume * sfxVol;
 	}
 
 	public static void PlayExplosion1(){
@@ -75,16 +76,14 @@ public class JukeboxScript : MonoBehaviour {
 			instance.hit2.Play ();
 	}
 
-	public void MusicSoundSlider(float a){
-		music.volume = a;
-	}
+	public void UpdateVolume(){
+		sfxVol = GameSettings.Get ().sfx;
+		musicVol = GameSettings.Get ().music;
 
-	public void SfxSoundSlider(float a ){
-		this.sfx = a;
-		hit1.volume = this.sfx;
-		hit2.volume = this.sfx;
-		//gravity.volume = this.sfx;
-	}
+		music.volume = musicVol;
 
+		hit1.volume = sfxVol;
+		hit2.volume = sfxVol;
+	}
 
 }
