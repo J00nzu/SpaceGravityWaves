@@ -7,6 +7,7 @@ public class MenuPhone : MonoBehaviour {
 	GameObject MenuObject;
 	Slider MusicVolume;
 	Slider SfxVolume;
+	GameObject YearCounter;
 	GameObject MenuButton;
 
 	struct LvlSelectButton{
@@ -37,7 +38,9 @@ public class MenuPhone : MonoBehaviour {
 		MenuButton = GameObject.Find ("Manu");
 
 
+
 		LevelSelect = GameObject.Find ("LevelSelect");
+		YearCounter = GameObject.Find ("YearCounter");
 
 
 		GM = FindObjectOfType<GameManager> ();
@@ -64,10 +67,17 @@ public class MenuPhone : MonoBehaviour {
 			}
 		}
 
+		if (GameSettings.Get ().yearEnabled) {
+			ShowYearCounter ();
+		} else {
+			HideYearCounter ();
+		}
+
 		InputH = FindObjectOfType<InputHandler> ();
 		Jbox = FindObjectOfType<JukeboxScript> ();
 		MusicVolume.value = 0.5f;
 		SfxVolume.value = 0.5f;
+
 
 		CloseMenu ();
 		CloseLevelSelect ();
@@ -122,6 +132,24 @@ public class MenuPhone : MonoBehaviour {
 
 	public void CloseLevelSelect(){
 		LevelSelect.SetActive (false);
+	}
+
+	public void SwitchYearCounter(){
+		if (YearCounter.activeInHierarchy) {
+			HideYearCounter ();
+			GameSettings.Get ().yearEnabled = false;
+		} else {
+			ShowYearCounter ();
+			GameSettings.Get ().yearEnabled = true;
+		}
+	}
+
+	public void ShowYearCounter(){
+		YearCounter.SetActive (true);
+	}
+
+	public void HideYearCounter(){
+		YearCounter.SetActive (false);
 	}
 
 	IEnumerator RotateButton(){

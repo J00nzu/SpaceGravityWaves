@@ -36,14 +36,19 @@ public static class GameSettings
 				BinaryFormatter bf = new BinaryFormatter();
 				FileStream file = File.Open(filePath, FileMode.Open);
 
-				settingsInstance = (SettingsObject)bf.Deserialize(file);
-				Debug.Log ("Settings loaded from : " + filePath);
-
-				Debug.Log(settingsInstance);
+				try{
+					settingsInstance = (SettingsObject)bf.Deserialize(file);
+					Debug.Log ("Settings loaded from : " + filePath);
+					Debug.Log(settingsInstance);
+				}catch(Exception ex){
+					Debug.LogWarning(ex);
+				}
 
 				file.Close ();
 			}catch(Exception ex){
-				Debug.LogError (ex);
+				Debug.LogWarning (ex);
+				CreateDefaults ();
+				Save ();
 			}finally{
 			}
 
@@ -58,6 +63,7 @@ public static class GameSettings
 		settingsInstance.music = 0.4f;
 		settingsInstance.sfx = 0.5f;
 		settingsInstance.progress = 0;
+		settingsInstance.yearEnabled = true;
 
 		return settingsInstance;
 	}
@@ -140,20 +146,20 @@ public class SettingsObject{
 		}
 	}
 
-	private float _year;
-	public float year{
+	private bool _yearEnabled;
+	public bool yearEnabled{
 		get{
-			return  _year;
+			return  _yearEnabled;
 		}
 		set{
-			_year = value;
+			_yearEnabled = value;
 			GameSettings.NotifyChange ();
 		}
 	}
 
 	public override string ToString ()
 	{
-		return string.Format ("[SettingsObject: music={0}, sfx={1}, progress={2}, deadPoints={3}, earthPoints={4}, year={5}]", music, sfx, progress, deadPoints, earthPoints, year);
+		return string.Format ("[SettingsObject: music={0}, sfx={1}, progress={2}, deadPoints={3}, earthPoints={4}]", music, sfx, progress, deadPoints, earthPoints);
 	}
 	
 	
