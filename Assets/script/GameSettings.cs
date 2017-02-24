@@ -55,7 +55,7 @@ public static class GameSettings
 
 	private static SettingsObject CreateDefaults(){
 		settingsInstance = new SettingsObject ();
-		settingsInstance.music = 0.5f;
+		settingsInstance.music = 0.4f;
 		settingsInstance.sfx = 0.5f;
 		settingsInstance.progress = 0;
 

@@ -9,10 +9,20 @@ public class MenuPhone : MonoBehaviour {
 	Slider SfxVolume;
 	GameObject MenuButton;
 
+	struct LvlSelectButton{
+		public int index;
+		public Button button;
+		public Image image;
+	}
+
+	GameObject LevelSelect;
+	List<LvlSelectButton> LevelSelectButtons = new List<LvlSelectButton> ();
+
 	bool MenuState = false;
 
 	InputHandler InputH;
 	JukeboxScript Jbox;
+	GameManager GM;
 
 	// Use this for initialization
 	void Start () {
@@ -26,12 +36,41 @@ public class MenuPhone : MonoBehaviour {
 		SfxVolume = GameObject.Find ("SfxSlider").GetComponent<Slider> ();
 		MenuButton = GameObject.Find ("Manu");
 
+
+		LevelSelect = GameObject.Find ("LevelSelect");
+
+
+		GM = FindObjectOfType<GameManager> ();
+
+		for (int i = 1; i <= 10; i++) {
+			GameObject gob = GameObject.Find ("ButtonLvl"+i);
+			Button bu = gob.GetComponent<Button> ();
+			Image im = gob.GetComponent<Image> ();
+			LvlSelectButton lvButt = new LvlSelectButton ();
+			lvButt.index = i;
+			lvButt.button = bu;
+			lvButt.image = im;
+
+			if (i <= GameSettings.Get ().progress) {
+				im.color = new Color (0, 0, 0, 0);
+				bu.interactable = true;
+				bu.onClick.AddListener (() => {
+					GM.ChangeLevel(lvButt.index);
+				});
+			} else {
+				im.color = new Color (0, 0, 0, 1f);
+				im.enabled = true;
+				bu.interactable = false;
+			}
+		}
+
 		InputH = FindObjectOfType<InputHandler> ();
 		Jbox = FindObjectOfType<JukeboxScript> ();
 		MusicVolume.value = 0.5f;
 		SfxVolume.value = 0.5f;
 
 		CloseMenu ();
+		CloseLevelSelect ();
 	}
 
 
@@ -62,10 +101,27 @@ public class MenuPhone : MonoBehaviour {
 		InputH.ActivateInput ();
 		GameSettings.Save ();
 		MenuState = false;
+		CloseLevelSelect ();
 	}
 
 	public bool GetMenuState(){
 		return MenuState;
+	}
+
+	public void SwitchLevelSelect(){
+		if (LevelSelect.activeInHierarchy) {
+			CloseLevelSelect ();
+		} else {
+			OpenLevelSelect ();
+		}
+	}
+
+	public void OpenLevelSelect(){
+		LevelSelect.SetActive (true);
+	}
+
+	public void CloseLevelSelect(){
+		LevelSelect.SetActive (false);
 	}
 
 	IEnumerator RotateButton(){
@@ -74,6 +130,5 @@ public class MenuPhone : MonoBehaviour {
 			yield return null;
 		}
 	}
-
 
 }

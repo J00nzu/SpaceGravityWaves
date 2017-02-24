@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
 	float winWaitingTime = 6;
 	float loseWaitingTime = 1.5f;
 
+	int lvlIndexOffset = 1;
+
 	UIScript UI;
 
 
@@ -37,6 +39,13 @@ public class GameManager : MonoBehaviour {
 		planetList.AddRange (planets);
 		Pause ();
 		UI = FindObjectOfType<UIScript> ();
+
+		int lvlIndex = SceneManager.GetActiveScene ().buildIndex - lvlIndexOffset;
+		if (GameSettings.Get ().progress < lvlIndex) {
+			GameSettings.Get ().progress++;
+			GameSettings.Save ();
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -106,6 +115,10 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	public void ChangeLevel(int index){
+		SceneManager.LoadScene (index + lvlIndexOffset);
+	}
+
 	public void Victory(){
 
 		IHandler.GetCooldownWait ();
@@ -132,6 +145,7 @@ public class GameManager : MonoBehaviour {
 	IEnumerator WaitForNextLevel(){
 		yield return new WaitForSeconds (winWaitingTime);
 		NextLevel = false;
+
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
