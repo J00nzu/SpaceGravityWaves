@@ -11,7 +11,7 @@ public class InputHandler : MonoBehaviour {
 	Vector3 offset;
 	UIScript UI;
 	bool firstPress = true;
-	bool inputCooldown;
+	bool inputCooldown, inputActive = true;
 	float inputCooldownTime = 0.5f;
 
 	MenuPhone MP;
@@ -21,6 +21,17 @@ public class InputHandler : MonoBehaviour {
 		return dragged != null;
 	}
 
+	public void DeactivateInput(){
+		inputActive = false;
+	}
+	public void ActivateInput(){
+		inputActive = true;
+	}
+	public bool IsInputActive(){
+		return inputActive;
+	}
+
+
 
 
 	// Use this for initialization
@@ -28,7 +39,6 @@ public class InputHandler : MonoBehaviour {
 		MP = FindObjectOfType<MenuPhone> ();
 		UI = FindObjectOfType<UIScript> ();
 		GM = FindObjectOfType<GameManager> ();
-		GetCooldownWait ();
 	}
 	
 	// Update is called once per frame
@@ -59,21 +69,15 @@ public class InputHandler : MonoBehaviour {
 		}
 
 
-
-
-
-
-
 		//MOUSE INPUT
 		Vector3 Mp = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
 		float Mx = Mp.x;
 		float My = Mp.y;
 
-		if (!GM.playing) {
+		if (!GM.playing && IsInputActive()) {
 
 			if (dragged == null) {
-				if(!MP.MenuState){
 					if (Input.GetMouseButton (0)) {
 						foreach (PlanetScript p in GM.GetAllPlanets()) {
 							float r = p.GetComponent<SpriteRenderer> ().sprite.bounds.extents.y;
@@ -87,7 +91,6 @@ public class InputHandler : MonoBehaviour {
 							}
 						}
 					}
-				}
 			} else {
 				dragged.MoveTo (new Vector3 (Mx, My, 0) + offset);
 				if (!Input.GetMouseButton (0)) {
@@ -108,11 +111,9 @@ public class InputHandler : MonoBehaviour {
 		}
 	}
 
-	/**
-	 * TODO: Redo these two
-	 */
+
 	public void SpaceBarButton(){
-		if (!inputCooldown) {
+		if (!inputCooldown && IsInputActive()) {
 			Debug.Log ("button");
 			if (firstPress) {
 				UI.HideTutorial ();
@@ -126,25 +127,18 @@ public class InputHandler : MonoBehaviour {
 	}
 
 	public void EscButton(){
-		MP.OpenMenu ();
+		if (!IsInputActive ()) {
+			return;
+		}
+		if (MP != null) {
+			MP.OpenMenu ();
+		}
 		//SceneManager.LoadScene (0);
-	}
-	/**
-	 * End redo
-	 */
-
-	public void GetCooldownWait(){
-		StartCoroutine ("StartCooldownWait");
 	}
 
 	IEnumerator InputCooldownWait(){
 		inputCooldown = true;
 		yield return new WaitForSeconds (inputCooldownTime);
-		inputCooldown = false;
-	}
-	IEnumerator StartCooldownWait(){
-		inputCooldown = true;
-		yield return new WaitForSeconds (5.0f);
 		inputCooldown = false;
 	}
 

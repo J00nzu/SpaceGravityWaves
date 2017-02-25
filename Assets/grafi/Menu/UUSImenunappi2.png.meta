@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: bd8b7a999a9f828449c832b3ed771747
-timeCreated: 1487928982
+guid: 042a45c1ba2cd1441bb205ac9e0e8de6
+timeCreated: 1487946070
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
-    mipMapMode: 0
-    enableMipMap: 0
+    mipMapMode: 1
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
-    fadeOut: 0
-    borderMipMap: 0
-    mipMapFadeDistanceStart: 1
-    mipMapFadeDistanceEnd: 3
+    fadeOut: 1
+    borderMipMap: 1
+    mipMapFadeDistanceStart: 7
+    mipMapFadeDistanceEnd: 9
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
@@ -28,7 +28,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -51,6 +51,14 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 1

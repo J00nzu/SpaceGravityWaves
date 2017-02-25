@@ -57,6 +57,7 @@ public class UIScript : MonoBehaviour {
 	}
 
 	IEnumerator FadeLevelName(){
+		input.DeactivateInput ();
 		levelName.color = new Color (1, 1, 1, 1);
 
 		yield return new WaitForSeconds (2);
@@ -68,6 +69,7 @@ public class UIScript : MonoBehaviour {
 			yield return null;
 		}
 		levelName.enabled = false;
+		input.ActivateInput ();
 	}
 
 	IEnumerator FadeTutorial(){

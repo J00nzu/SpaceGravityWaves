@@ -8,11 +8,13 @@ public class FollowMouse : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition) / divisor;
-		transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+		if (Application.platform == RuntimePlatform.Android
+		   || Application.platform == RuntimePlatform.IPhonePlayer) {
 
-		if(Application.platform == RuntimePlatform.Android){
-		transform.position = new Vector3(Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
+			transform.position = new Vector3 (Input.acceleration.x, Input.acceleration.y, Input.acceleration.z);
+		} else {
+			Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition) / divisor;
+			transform.position = new Vector3(pos.x, pos.y, transform.position.z);
 		}
 	}
 }

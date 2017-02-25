@@ -55,7 +55,7 @@ public static class GameSettings
 
 	private static SettingsObject CreateDefaults(){
 		settingsInstance = new SettingsObject ();
-		settingsInstance.music = 0.5f;
+		settingsInstance.music = 0.4f;
 		settingsInstance.sfx = 0.5f;
 		settingsInstance.progress = 0;
 
@@ -118,10 +118,44 @@ public class SettingsObject{
 		}
 	}
 
+	private int _deadPoints;
+	public int deadPoints{
+		get{
+			return  _deadPoints;
+		}
+		set{
+			_deadPoints = value;
+			GameSettings.NotifyChange ();
+		}
+	}
+
+	private int _earthPoints;
+	public int earthPoints{
+		get{
+			return  _earthPoints;
+		}
+		set{
+			_earthPoints = value;
+			GameSettings.NotifyChange ();
+		}
+	}
+
+	private float _year;
+	public float year{
+		get{
+			return  _year;
+		}
+		set{
+			_year = value;
+			GameSettings.NotifyChange ();
+		}
+	}
+
 	public override string ToString ()
 	{
-		return string.Format ("[SettingsObject: music={0}, sfx={1}, progress={2}]", music, sfx, progress);
+		return string.Format ("[SettingsObject: music={0}, sfx={1}, progress={2}, deadPoints={3}, earthPoints={4}, year={5}]", music, sfx, progress, deadPoints, earthPoints, year);
 	}
+	
 	
 }
 
