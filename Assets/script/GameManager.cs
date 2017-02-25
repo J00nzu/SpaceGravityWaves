@@ -46,6 +46,13 @@ public class GameManager : MonoBehaviour {
 			GameSettings.Save ();
 		}
 
+		if (lvlIndex == 1) {
+			Statistic[] stats = FindObjectsOfType<Statistic> ();
+			foreach(Statistic stat in stats){
+				stat.ResetYear ();
+			}
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -116,6 +123,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ChangeLevel(int index){
+		GameSettings.Save ();
 		SceneManager.LoadScene (index + lvlIndexOffset);
 	}
 
