@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 	float winWaitingTime = 6;
 	float loseWaitingTime = 1.5f;
 
-	int lvlIndexOffset = 1;
+	public static int lvlIndexOffset = 1;
 
 	UIScript UI;
 
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 
 
 	List<PlanetScript> planetList = new List<PlanetScript>();
+	List<MeteorScript> meteorList = new List<MeteorScript>();
+
 
 
 	// Use this for initialization
@@ -37,6 +39,10 @@ public class GameManager : MonoBehaviour {
 		point = FindObjectOfType<Statistic> ();
 		PlanetScript[] planets = FindObjectsOfType<PlanetScript> ();
 		planetList.AddRange (planets);
+
+		MeteorScript[] meteors = FindObjectsOfType<MeteorScript> ();
+		meteorList.AddRange (meteors);
+
 		Pause ();
 		UI = FindObjectOfType<UIScript> ();
 
@@ -61,6 +67,10 @@ public class GameManager : MonoBehaviour {
 
 	public List<PlanetScript> GetAllPlanets(){
 		return planetList;
+	}
+
+	public List<MeteorScript> GetAllMeteors(){
+		return meteorList;
 	}
 
 	/*
@@ -110,13 +120,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Dead(){
+		bool onealive = false;
+		foreach (MeteorScript ass in GetAllMeteors()) {
+			if (ass.isAlive ()) {
+				onealive = true;
+			}
+		}
+
+		if (onealive) {
+			return;
+		}
+
+
 		if (!Restarting) {
 			
 			Restarting = true;
 			StartCoroutine ("WaitRestart");
-			FindObjectOfType<MeteorScript> ().Explode ();
-
-			JukeboxScript.PlayExplosion2 ();
 		}
 		Pause ();
 
@@ -138,10 +157,9 @@ public class GameManager : MonoBehaviour {
 				point.earthpoint++;
 			NextLevel = true;
 			StartCoroutine ("WaitForNextLevel");
-			FindObjectOfType<MeteorScript> ().Explode ();
-			FindObjectOfType<EarthScript> ().Explode ();
-
-			JukeboxScript.PlayExplosion1 ();
+			//FindObjectOfType<MeteorScript> ().Explode ();
+			//FindObjectOfType<EarthScript> ().Explode ();
+			//JukeboxScript.PlayExplosion1 ();
 			UI.ShowVictory ();
 		}
 

@@ -17,8 +17,11 @@ public class MoonScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 
 		if(other.gameObject.tag == "Player"){
-			Debug.Log ("Osu Planettaan");
-			GM.Dead ();
+			MeteorScript met = other.transform.GetComponent<MeteorScript> ();
+			if (met!=null) {
+				met.Explode ();
+				GM.Dead ();
+			}
 		}
 	}
 }

@@ -256,6 +256,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114825876067768430, guid: be57b133382303d45bd4cb1668262cf7,
+        type: 2}
+      propertyPath: levelMusic.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae1cf02bb7621c9459cc7cf68024d88a, type: 3}
+    - target: {fileID: 114825876067768430, guid: be57b133382303d45bd4cb1668262cf7,
+        type: 2}
+      propertyPath: levelMusic.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae1cf02bb7621c9459cc7cf68024d88a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be57b133382303d45bd4cb1668262cf7, type: 2}
   m_IsPrefabParent: 0
