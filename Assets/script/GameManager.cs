@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 
 
 	public bool Restarting = false;
+	public bool Introing = false;
 
 	Statistic point;
 

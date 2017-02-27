@@ -20,6 +20,7 @@ public class IntroScript : MonoBehaviour {
 
 	Camera cam;
 	UIScript UI;
+	GameManager GM;
 	GameObject bg;
 
 	bool running = true;
@@ -27,10 +28,13 @@ public class IntroScript : MonoBehaviour {
 	void Start () {
 		cam = Camera.main;
 		UI = FindObjectOfType<UIScript> ();
+		GM = FindObjectOfType<GameManager> ();
 		bg = GameObject.Find ("Background");
 
 		cam.orthographicSize = startOrthoSize;
 		orthoSize = startOrthoSize;
+
+		GM.Introing = true;
 	}
 	
 	void Update () {
@@ -61,6 +65,7 @@ public class IntroScript : MonoBehaviour {
 				running = false;
 				if (UI != null) {
 					UI.NotifyIntroEnd ();
+					GM.Introing = false;
 				}
 				StartCoroutine ("WaitAWhile");
 			}

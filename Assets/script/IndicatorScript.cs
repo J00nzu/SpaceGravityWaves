@@ -10,10 +10,14 @@ public class IndicatorScript : MonoBehaviour {
 
 	List<IndicatorChild> indList = new List<IndicatorChild> ();
 
+	GameManager GM;
+
 
 	// Use this for initialization
 	void Start () {
 		MeteorScript[] meteors = FindObjectsOfType<MeteorScript> ();
+
+		GM = FindObjectOfType<GameManager> ();
 
 		if (indPrefab == null) {
 			Debug.LogError ("No indicatorPrefab found. Did you forget to set it in IndicatorScript?");
@@ -39,6 +43,9 @@ public class IndicatorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (GM.Introing) {
+			return;
+		}
 		foreach(IndicatorChild indie in indList){
 			MeteorScript target = indie.target;
 			float verticalHigh = Camera.main.orthographicSize;
