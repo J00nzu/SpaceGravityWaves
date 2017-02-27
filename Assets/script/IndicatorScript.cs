@@ -109,6 +109,7 @@ public class IndicatorScript : MonoBehaviour {
 
 	/*
 	 * From https://forum.unity3d.com/threads/line-intersection.17384/
+	 * PS. Why can't people name their variables properly?
 	*/
 	public static bool LineIntersection( Vector2 l1_s,Vector2 l1_e, Vector2 l2_s, Vector2 l2_e, ref Vector2 intersection )
 	{
