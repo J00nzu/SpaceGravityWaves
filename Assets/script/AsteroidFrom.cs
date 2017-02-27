@@ -18,4 +18,14 @@ public class AsteroidFrom : MonoBehaviour {
 		Asteroids.transform.position = Vector3.MoveTowards (Asteroids.transform.position,to.transform.position,step);
 
 	}
+
+	public void MoveAsteroidBack(){
+
+
+		Asteroids.transform.position = this.transform.position;
+	}
+
+
+
+
 }

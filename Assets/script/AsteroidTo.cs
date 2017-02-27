@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidTo : MonoBehaviour {
+	AsteroidFrom AstFrom;
 
-	// Use this for initialization
 	void Start () {
-		
+		AstFrom = FindObjectOfType<AsteroidFrom> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	void OnTriggerEnter2D(Collider2D other){
+
+		if (other.gameObject.tag == "Finish") {
+
+			Debug.Log ("asteroidi kosketti");
+			AstFrom.MoveAsteroidBack ();
+		}
+		}
 }

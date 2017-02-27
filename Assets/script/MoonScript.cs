@@ -21,4 +21,6 @@ public class MoonScript : MonoBehaviour {
 			GM.Dead ();
 		}
 	}
+
+
 }
