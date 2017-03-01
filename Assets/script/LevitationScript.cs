@@ -14,7 +14,7 @@ public class LevitationScript : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		transform.position = new Vector3 (transform.position.x, Mathf.PingPong(Time.time/Div,dis));
+		transform.position = new Vector3 (transform.position.x,   Mathf.PingPong(Time.time/Div,dis));
 
 
 	}
