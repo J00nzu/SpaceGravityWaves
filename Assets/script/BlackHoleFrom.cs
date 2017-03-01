@@ -20,7 +20,7 @@ public class BlackHoleFrom : MonoBehaviour {
 			MeteorScript met = other.transform.GetComponent<MeteorScript> ();
 			if (met!=null) {
 				met.transform.position = To.transform.position;
-
+				JukeboxScript.PlayBlackHole ();
 			}
 		}	
 

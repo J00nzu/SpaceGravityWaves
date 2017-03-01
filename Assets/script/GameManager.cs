@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour {
 			Restart ();
 		} else {
 			Play ();
+			JukeboxScript.PlayLaunch ();
 		}
 	}
 

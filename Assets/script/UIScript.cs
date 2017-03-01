@@ -73,6 +73,7 @@ public class UIScript : MonoBehaviour {
 
 	public void NotifyIntroPress(){
 		StartCoroutine ("IntroEnd");
+		JukeboxScript.PlayClick ();
 	}
 
 

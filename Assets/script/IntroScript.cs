@@ -65,7 +65,6 @@ public class IntroScript : MonoBehaviour {
 				running = false;
 				if (UI != null) {
 					UI.NotifyIntroEnd ();
-					GM.Introing = false;
 				}
 				StartCoroutine ("WaitAWhile");
 			}
@@ -88,5 +87,7 @@ public class IntroScript : MonoBehaviour {
 		cam.orthographicSize = targetOrthoSize;
 		bg.transform.localScale = new Vector3 (1, 1, 1);
 		this.enabled = false;
+		GM.Introing = false;
+
 	}
 }
