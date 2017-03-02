@@ -12,7 +12,7 @@ public class IntroScript : MonoBehaviour {
 	public int maxBounceTimes;
 
 
-	float orthoVel = 0;
+	public float orthoVel = 9;
 	float orthoSize = 0;
 
 	int currBounceTimes = 0;
@@ -48,7 +48,13 @@ public class IntroScript : MonoBehaviour {
 				orthoVel += orthoAccerlation * Time.deltaTime;
 			}
 
-			orthoSize -= orthoVel * Time.deltaTime;
+
+			if (GameSettings.Get ().progress >= 2 && Input.GetMouseButton (0)) {
+				stopRun ();
+				orthoVel = 400 * (orthoSize/startOrthoSize);
+			} else {
+				orthoSize -= orthoVel * Time.deltaTime;
+			}
 
 			if (!isBounce) {
 				if (Mathf.Abs (orthoSize - targetOrthoSize) < 0.3f) {
@@ -62,11 +68,7 @@ public class IntroScript : MonoBehaviour {
 			}
 
 			if (currBounceTimes >= maxBounceTimes) {
-				running = false;
-				if (UI != null) {
-					UI.NotifyIntroEnd ();
-				}
-				StartCoroutine ("WaitAWhile");
+				stopRun ();
 			}
 		} else {
 			orthoSize += (targetOrthoSize - orthoSize) * Time.deltaTime;
@@ -79,6 +81,14 @@ public class IntroScript : MonoBehaviour {
 
 		cam.orthographicSize = orthoSize;
 
+	}
+
+	void stopRun(){
+		running = false;
+		if (UI != null) {
+			UI.NotifyIntroEnd ();
+		}
+		StartCoroutine ("WaitAWhile");
 	}
 
 	IEnumerator WaitAWhile(){
