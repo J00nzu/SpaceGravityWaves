@@ -74,23 +74,46 @@ public class UIScript : MonoBehaviour {
 	public void NotifyIntroPress(){
 		StartCoroutine ("IntroEnd");
 		JukeboxScript.PlayClick ();
+		GM.Introing = false;
 	}
 
 
 	IEnumerator FadeLevelName(){
-		input.DeactivateInput ();
-		levelName.color = new Color (1, 1, 1, 1);
+		if (levelName != null) {
+			input.DeactivateInput ();
+			levelName.color = new Color (1, 1, 1, 1);
 
-		yield return new WaitForSeconds (2);
-		float a = 1;
+			yield return new WaitForSeconds (2);
+			float a = 1;
 
-		while (a > 0) {
-			levelName.color = new Color (1, 1, 1, a);
-			a -= 0.01f;
-			yield return null;
+			while (a > 0) {
+				levelName.color = new Color (1, 1, 1, a);
+				a -= 0.01f;
+				yield return null;
+			}
+			levelName.enabled = false;
+		} else {
+			StartCoroutine ("FadeInTutorial");
 		}
-		levelName.enabled = false;
 		input.ActivateInput ();
+		yield return null;
+	}
+
+	IEnumerator FadeInTutorial(){
+		if (tutorial != null) {
+			float a = 0;
+			tutorial.enabled = true;
+
+			while (a < 1) {
+				tutorial.color = new Color (1, 1, 1, a);
+				a += 0.02f;
+				if (a > 1)
+					a = 1;
+				yield return null;
+			}
+		}
+
+		yield return null;
 	}
 
 	IEnumerator FadeTutorial(){
