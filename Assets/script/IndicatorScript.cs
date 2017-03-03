@@ -10,10 +10,14 @@ public class IndicatorScript : MonoBehaviour {
 
 	List<IndicatorChild> indList = new List<IndicatorChild> ();
 
+	GameManager GM;
+
 
 	// Use this for initialization
 	void Start () {
 		MeteorScript[] meteors = FindObjectsOfType<MeteorScript> ();
+
+		GM = FindObjectOfType<GameManager> ();
 
 		if (indPrefab == null) {
 			Debug.LogError ("No indicatorPrefab found. Did you forget to set it in IndicatorScript?");
@@ -39,6 +43,9 @@ public class IndicatorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (GM.Introing) {
+			return;
+		}
 		foreach(IndicatorChild indie in indList){
 			MeteorScript target = indie.target;
 			float verticalHigh = Camera.main.orthographicSize;
@@ -102,6 +109,7 @@ public class IndicatorScript : MonoBehaviour {
 
 	/*
 	 * From https://forum.unity3d.com/threads/line-intersection.17384/
+	 * PS. Why can't people name their variables properly?
 	*/
 	public static bool LineIntersection( Vector2 l1_s,Vector2 l1_e, Vector2 l2_s, Vector2 l2_e, ref Vector2 intersection )
 	{

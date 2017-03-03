@@ -68,6 +68,8 @@ public class Satellite : DynamicObject {
 	}
 
 	new void Explode(){
+		ExplosionSound ();
+
 		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		PolygonCollider2D coll = GetComponent<PolygonCollider2D> ();
@@ -116,6 +118,11 @@ public class Satellite : DynamicObject {
 
 		explo = explo2;
 
+	}
+
+
+	new protected void ExplosionSound(){
+		JukeboxScript.PlayExplosion3 ();
 	}
 }
 

@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour {
 
 	Image left, right;
-	Image tutorial, levelName, victory;
+	Image tutorial, levelName, victory, introImg;
 	InputHandler input;
 	GameManager GM;
 
 	int LRmaxAlpha = 150;
-	int LRcurrAlpha = 150;
+	int LRcurrAlpha = 0;
 	int AlphaDecrease = 10;
 
 	float waitTime = 1.0f/30;
 
 	public Button spacebar;
+
+	IntroScript intro;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +29,7 @@ public class UIScript : MonoBehaviour {
 		levelName = transform.Find ("LevelName").GetComponent<Image>();
 		victory = transform.Find ("LevelVictory").GetComponent<Image>();
 
+
 		left.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 		right.color = new Color (0, 0, 0, (float)LRcurrAlpha/255.0f);
 
@@ -34,9 +37,16 @@ public class UIScript : MonoBehaviour {
 
 		input = FindObjectOfType<InputHandler> ();
 		GM = FindObjectOfType<GameManager> ();
+		intro = FindObjectOfType<IntroScript> ();
+
+		if (intro != null) {
+			introImg = transform.Find ("IntroImage").GetComponent<Image>();
+			StartCoroutine ("IntroStart");
+		} else {
+			StartCoroutine ("FadeLevelName");
+		}
 
 		StartCoroutine ("FadeSides");
-		StartCoroutine ("FadeLevelName");
 	}
 	
 	// Update is called once per frame
@@ -55,6 +65,16 @@ public class UIScript : MonoBehaviour {
 	public void ShowVictory(){
 		StartCoroutine ("FadeVictory");
 	}
+
+
+	public void NotifyIntroEnd(){
+		StartCoroutine ("IntroWait");
+	}
+
+	public void NotifyIntroPress(){
+		StartCoroutine ("IntroEnd");
+	}
+
 
 	IEnumerator FadeLevelName(){
 		input.DeactivateInput ();
@@ -118,6 +138,53 @@ public class UIScript : MonoBehaviour {
 
 			yield return null;
 		}
+	}
+
+	IEnumerator IntroStart(){
+		levelName.enabled = false;
+		tutorial.enabled = false;
+		introImg.enabled = false;
+		input.DeactivateInput ();
+
+		return null;
+	}
+
+	IEnumerator IntroWait(){
+
+		yield return new WaitForSeconds (2);
+
+
+		float a = 0;
+		introImg.enabled = true;
+
+
+		while (a < 1) {
+			introImg.color = new Color (1, 1, 1, a);
+			a += 0.02f;
+			if (a > 1)
+				a = 1;
+			yield return null;
+		}
+	}
+
+	IEnumerator IntroEnd(){
+
+		levelName.enabled = true;
+
+		float a = 1;
+		while (a > 0) {
+			introImg.color = new Color (1, 1, 1, a);
+			levelName.color = new Color (1, 1, 1, 1-a);
+
+			a -= 0.02f;
+			if (a < 0)
+				a = 0;
+			yield return null;
+		}
+		introImg.enabled = false;
+
+		StartCoroutine ("FadeLevelName");
+		tutorial.enabled = true;
 	}
 
 }

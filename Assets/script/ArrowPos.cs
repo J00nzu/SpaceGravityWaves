@@ -11,7 +11,7 @@ public class ArrowPos : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		meteorit = FindObjectOfType<MeteorScript> ();
+		meteorit = transform.parent.GetComponent<MeteorScript> ();
 		GM = FindObjectOfType<GameManager>();
 		sprite = this.GetComponent<SpriteRenderer> ();
 	}

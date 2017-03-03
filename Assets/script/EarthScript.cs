@@ -27,13 +27,18 @@ public class EarthScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 
 		if(other.gameObject.tag == "Player"){
-			Debug.Log ("Osu Maahan");
-
-			gm.Victory ();
+			MeteorScript met = other.transform.GetComponent<MeteorScript> ();
+			if (met!=null) {
+				met.Explode ();
+				this.Explode ();
+				gm.Victory ();
+			}
 		}
 	}
 
 	public void Explode(){
+		ExplosionSound ();
+
 		ParticleSystem exp = GetComponentInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		CircleCollider2D coll = GetComponent<CircleCollider2D> ();
@@ -62,5 +67,9 @@ public class EarthScript : MonoBehaviour {
 			goRig.velocity =  (dir * 0.5f);
 			goRig.angularVelocity = Random.value * 180 - 90;
 		}
+	}
+
+	new protected void ExplosionSound(){
+		JukeboxScript.PlayExplosion1 ();
 	}
 }

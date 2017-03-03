@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Statistic : MonoBehaviour {
 
@@ -12,7 +13,9 @@ public class Statistic : MonoBehaviour {
 	GameManager GM;
 	Text yearCounter;
 
-	float yearsPerSecond = 2f;
+	float yearsPerSecond = 1f;
+
+	bool firstUpdate = true;
 
 
 	// Use this for initialization
@@ -21,7 +24,11 @@ public class Statistic : MonoBehaviour {
 		// if scene already has one Statistics thingy
 		if (FindObjectsOfType (GetType()).Length > 1) {
 			Destroy (gameObject);
+			return;
 		}
+
+		SceneManager.sceneLoaded += NewLevelLoaded;
+
 
 		GM = FindObjectOfType<GameManager> ();
 		GameObject GO = GameObject.Find ("YearCounter");
@@ -34,6 +41,11 @@ public class Statistic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update(){
+		if (firstUpdate) {
+			GM = FindObjectOfType<GameManager> ();
+			firstUpdate = false;
+		}
+
 		if (GM.playing && !GM.NextLevel) {
 			year += Time.deltaTime * yearsPerSecond;
 		}
@@ -49,6 +61,10 @@ public class Statistic : MonoBehaviour {
 
 	public void ResetYear(){
 		year = 2017;
+	}
+
+	public void NewLevelLoaded(Scene scene, LoadSceneMode loadMode){
+		firstUpdate = true;
 	}
 
 }

@@ -61,6 +61,8 @@ public abstract class DynamicObject : MonoBehaviour {
 	protected abstract void PlayPressed ();
 
 	public void Explode(){
+		ExplosionSound ();
+
 		ParticleSystem[] exp = GetComponentsInChildren<ParticleSystem> ();
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		CircleCollider2D cColl = GetComponent<CircleCollider2D> ();
@@ -93,5 +95,9 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	public bool isAlive(){
 		return Alive;
+	}
+
+	protected void ExplosionSound(){
+		JukeboxScript.PlayExplosion2 ();
 	}
 }
