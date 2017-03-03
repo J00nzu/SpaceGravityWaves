@@ -59,6 +59,7 @@ public class MenuPhone : MonoBehaviour {
 				bu.interactable = true;
 				bu.onClick.AddListener (() => {
 					GM.ChangeLevel(lvButt.index);
+					JukeboxScript.PlayClick ();
 				});
 			} else {
 				im.color = new Color (0, 0, 0, 1f);
@@ -104,6 +105,7 @@ public class MenuPhone : MonoBehaviour {
 		StartCoroutine ("RotateButton");
 
 		MenuState = true;
+		JukeboxScript.PlayClick ();
 	}
 
 	public void CloseMenu(){
@@ -112,6 +114,7 @@ public class MenuPhone : MonoBehaviour {
 		GameSettings.Save ();
 		MenuState = false;
 		CloseLevelSelect ();
+		JukeboxScript.PlayClick ();
 	}
 
 	public bool GetMenuState(){
@@ -124,17 +127,21 @@ public class MenuPhone : MonoBehaviour {
 		} else {
 			OpenLevelSelect ();
 		}
+
 	}
 
 	public void OpenLevelSelect(){
 		LevelSelect.SetActive (true);
+		JukeboxScript.PlayClick ();
 	}
 
 	public void CloseLevelSelect(){
 		LevelSelect.SetActive (false);
+		JukeboxScript.PlayClick ();
 	}
 
 	public void SwitchYearCounter(){
+		JukeboxScript.PlayClick ();
 		if (YearCounter.activeInHierarchy) {
 			HideYearCounter ();
 			GameSettings.Get ().yearEnabled = false;

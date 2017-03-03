@@ -24,9 +24,9 @@ public class ArrowPos : MonoBehaviour {
 		}
 
 		if (GM != null) {
-			if (GM.playing && sprite.enabled) {
+			if ((GM.playing || GM.Introing) && sprite.enabled) {
 				sprite.enabled = false;
-			}else if( !GM.Restarting && !GM.playing && !sprite.enabled){
+			}else if( !GM.Restarting && !GM.playing && !GM.Introing &&!sprite.enabled){
 				sprite.enabled = true;
 			}
 		}
