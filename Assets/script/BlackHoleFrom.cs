@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackHoleFrom : MonoBehaviour {
-	BlackHoleTo To;
+	public BlackHoleTo To;
 	// Use this for initialization
 	void Start () {
-		To = FindObjectOfType<BlackHoleTo> ();
+		//To = FindObjectOfType<BlackHoleTo> ();
 	}
 	
 	// Update is called once per frame

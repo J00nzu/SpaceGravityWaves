@@ -31,9 +31,18 @@ public class AsteroidMoveScript : MonoBehaviour {
 			this.transform.position = Afrom.transform.position;
 		}
 
-		if (other.gameObject.tag == "Player") {
-			GM.Dead ();
+		if (other.gameObject.name == "meteor") {
+			
+			MeteorScript met = other.transform.GetComponent<MeteorScript> ();
+			if (met!=null) {
+				met.Explode ();
+				GM.Dead ();
+			}
 		}
+
 	}
+
+
+
 
 }
