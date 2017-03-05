@@ -9,6 +9,7 @@ public class UIScript : MonoBehaviour {
 	Image tutorial, levelName, victory, introImg;
 	InputHandler input;
 	GameManager GM;
+	MenuPhone menp;
 
 	int LRmaxAlpha = 150;
 	int LRcurrAlpha = 0;
@@ -38,11 +39,20 @@ public class UIScript : MonoBehaviour {
 		input = FindObjectOfType<InputHandler> ();
 		GM = FindObjectOfType<GameManager> ();
 		intro = FindObjectOfType<IntroScript> ();
+		menp = FindObjectOfType<MenuPhone> ();
+		GameObject introImgObject = GameObject.Find ("IntroImage");
+		if (introImgObject != null) {
+			introImg = introImgObject.GetComponent<Image> ();
+		}
 
 		if (intro != null) {
-			introImg = transform.Find ("IntroImage").GetComponent<Image>();
 			StartCoroutine ("IntroStart");
 		} else {
+			
+			if(introImg!=null){
+				introImg.enabled = false;
+			}
+
 			StartCoroutine ("FadeLevelName");
 		}
 
@@ -165,12 +175,22 @@ public class UIScript : MonoBehaviour {
 	}
 
 	IEnumerator IntroStart(){
-		levelName.enabled = false;
 		tutorial.enabled = false;
 		introImg.enabled = false;
+		if (menp != null) {
+			menp.HideMenuControls ();
+		}
 		input.DeactivateInput ();
 
-		return null;
+		float a = 1;
+
+		while (a > 0) {
+			levelName.color = new Color (1, 1, 1, a);
+			a -= 0.01f;
+			yield return null;
+		}
+		levelName.enabled = false;
+
 	}
 
 	IEnumerator IntroWait(){
@@ -192,23 +212,26 @@ public class UIScript : MonoBehaviour {
 	}
 
 	IEnumerator IntroEnd(){
-
-		levelName.enabled = true;
+		if (menp != null) {
+			menp.ShowMenuControls ();
+		}
+		tutorial.enabled = true;
 
 		float a = 1;
 		while (a > 0) {
 			introImg.color = new Color (1, 1, 1, a);
-			levelName.color = new Color (1, 1, 1, 1-a);
+			tutorial.color = new Color (1, 1, 1, 1-a);
 
 			a -= 0.02f;
 			if (a < 0)
 				a = 0;
 			yield return null;
 		}
-		introImg.enabled = false;
 
-		StartCoroutine ("FadeLevelName");
+		introImg.enabled = false;
 		tutorial.enabled = true;
+
+		input.ActivateInput ();
 	}
 
 }

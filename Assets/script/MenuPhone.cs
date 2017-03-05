@@ -159,6 +159,16 @@ public class MenuPhone : MonoBehaviour {
 		YearCounter.SetActive (false);
 	}
 
+	public void HideMenuControls(){
+		YearCounter.SetActive (false);
+		MenuButton.SetActive (false);
+	}
+
+	public void ShowMenuControls(){
+		YearCounter.SetActive (true);
+		MenuButton.SetActive (true);
+	}
+
 	IEnumerator RotateButton(){
 		for (int i = 0; i < 15; i++) {
 			MenuButton.transform.Rotate (new Vector3(0,0,-2f));
