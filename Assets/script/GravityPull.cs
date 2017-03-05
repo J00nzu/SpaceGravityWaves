@@ -8,8 +8,8 @@ public class GravityPull : MonoBehaviour {
 
 
 
-	float gravity = 5;
-	float gravityexp = 1.3f;
+	float gravity = 8;
+	float gravityexp = 1.5f;
 
 	public float Mass_1;
 

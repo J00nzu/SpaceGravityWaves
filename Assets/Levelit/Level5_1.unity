@@ -599,6 +599,31 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 21bc2d75aaf51d54186d5cae65f83580,
         type: 3}
+    - target: {fileID: 114686517360532668, guid: eb02a143decd5c44abfe1aa7f8617f8a,
+        type: 2}
+      propertyPath: LevelRightBound
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764395263004346, guid: eb02a143decd5c44abfe1aa7f8617f8a,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 92.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764395263004346, guid: eb02a143decd5c44abfe1aa7f8617f8a,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764395263004346, guid: eb02a143decd5c44abfe1aa7f8617f8a,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -166.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 224764395263004346, guid: eb02a143decd5c44abfe1aa7f8617f8a,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb02a143decd5c44abfe1aa7f8617f8a, type: 2}
   m_IsPrefabParent: 0
@@ -788,7 +813,6 @@ GameObject:
   - component: {fileID: 1712219359}
   - component: {fileID: 1712219358}
   - component: {fileID: 1712219357}
-  - component: {fileID: 1712219362}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -864,24 +888,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1712219362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1712219356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 214ed44f222e1064186ae25647566c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startOrthoSize: 200
-  targetOrthoSize: 5
-  orthoAccerlation: 15
-  orthoDampen: 0.9
-  backUpMultiplier: 1.2
-  maxBounceTimes: 2
-  orthoVel: 18
 --- !u!1001 &1712568277
 Prefab:
   m_ObjectHideFlags: 0
@@ -1030,11 +1036,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4959589246779710, guid: b67da9096c38caf4e99d58a4acb60cae, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.3091874
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 4959589246779710, guid: b67da9096c38caf4e99d58a4acb60cae, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.7621827
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 4959589246779710, guid: b67da9096c38caf4e99d58a4acb60cae, type: 2}
       propertyPath: m_LocalPosition.z
