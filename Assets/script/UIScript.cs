@@ -57,6 +57,10 @@ public class UIScript : MonoBehaviour {
 		}
 
 		StartCoroutine ("FadeSides");
+
+		if (!tutorial.gameObject.activeInHierarchy) {
+			input.firstPress = false;
+		}
 	}
 	
 	// Update is called once per frame

@@ -10,7 +10,7 @@ public class InputHandler : MonoBehaviour {
 	PlanetScript dragged = null;
 	Vector3 offset;
 	UIScript UI;
-	bool firstPress = true;
+	public bool firstPress = true;
 	bool inputCooldown, inputActive = true;
 	float inputCooldownTime = 0.5f;
 
