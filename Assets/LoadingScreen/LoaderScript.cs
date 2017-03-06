@@ -18,6 +18,9 @@ public class LoaderScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (Application.platform == RuntimePlatform.OSXPlayer) {
+			Screen.SetResolution (1280, 720, false);
+		}
 		StartCoroutine ("LevelLoadRoutine");
 	}
 
