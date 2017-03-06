@@ -33,7 +33,7 @@ public class Statistic : MonoBehaviour {
 		GM = FindObjectOfType<GameManager> ();
 		GameObject GO = GameObject.Find ("YearCounter");
 		if (GO != null) {
-			yearCounter = GO.GetComponent<Text> ();
+			yearCounter = GO.GetComponentInChildren<Text> ();
 		}
 		deadpoint = GameSettings.Get ().deadPoints;
 		earthpoint = GameSettings.Get ().earthPoints;
