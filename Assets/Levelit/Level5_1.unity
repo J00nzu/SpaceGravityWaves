@@ -355,11 +355,6 @@ Prefab:
       propertyPath: m_Name
       value: asteroidiKeha
       objectReference: {fileID: 0}
-    - target: {fileID: 114442230881373546, guid: 405981a1c53bdde4e92bd90753117b8a,
-        type: 2}
-      propertyPath: speed
-      value: 0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 405981a1c53bdde4e92bd90753117b8a, type: 2}
   m_IsPrefabParent: 0
@@ -469,7 +464,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 259134390}
     - target: {fileID: 114522460653158362, guid: eb02a143decd5c44abfe1aa7f8617f8a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -603,6 +598,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EscButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114428703698197002, guid: eb02a143decd5c44abfe1aa7f8617f8a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpaceBarButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb02a143decd5c44abfe1aa7f8617f8a, type: 2}
@@ -906,10 +906,6 @@ Prefab:
     - target: {fileID: 4772165715794554, guid: 5f99e28e0ebdcdd4e9bb17f6c23535ed, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1539973782067434, guid: 5f99e28e0ebdcdd4e9bb17f6c23535ed, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f99e28e0ebdcdd4e9bb17f6c23535ed, type: 2}

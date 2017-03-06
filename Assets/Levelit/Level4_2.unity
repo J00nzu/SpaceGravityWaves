@@ -683,6 +683,11 @@ Prefab:
       propertyPath: GM
       value: 
       objectReference: {fileID: 1635773114}
+    - target: {fileID: 114173783662171548, guid: cb9bd5ac582b0b2438acde7b03c0e31a,
+        type: 2}
+      propertyPath: SetToMove
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb9bd5ac582b0b2438acde7b03c0e31a, type: 2}
   m_IsPrefabParent: 0
