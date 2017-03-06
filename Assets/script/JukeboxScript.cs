@@ -172,9 +172,9 @@ public class JukeboxScript : MonoBehaviour {
 	public void NewLevelLoaded(Scene scene, LoadSceneMode loadMode){
 		firstUpdate = true;
 		int sceneIndex = scene.buildIndex - GameManager.lvlIndexOffset - 1;
-
+		Debug.Log ("sceneIndexJukebox: " + sceneIndex);
 		try{
-			AudioClip newClip = levelMusic[sceneIndex];;
+			AudioClip newClip = levelMusic[sceneIndex];
 
 			if(newClip != music1.clip){
 				music1.clip = newClip;
