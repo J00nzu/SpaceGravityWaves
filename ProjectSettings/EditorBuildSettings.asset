@@ -40,4 +40,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levelit/Level5_1.unity
   - enabled: 1
+    path: Assets/Levelit/Level5_2.unity
+  - enabled: 1
     path: Assets/Levelit/FinalScene.unity
