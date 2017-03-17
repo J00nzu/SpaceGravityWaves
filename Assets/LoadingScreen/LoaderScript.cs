@@ -27,7 +27,7 @@ public class LoaderScript : MonoBehaviour {
 	IEnumerator LevelLoadRoutine(){
 		fadeOut.CrossFadeAlpha (0, 6, true);
 
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(4);
 
 		if (!Application.isEditor) {
 			asyLoad = SceneManager.LoadSceneAsync (levelIndexToLoad);
