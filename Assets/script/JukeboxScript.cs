@@ -93,7 +93,7 @@ public class JukeboxScript : MonoBehaviour {
 			}
 
 
-			if(shieldObject!=null){
+			if(shieldObject!=null && shieldObject.isAlive){
 				//Shield sound volume
 				foreach (MeteorScript meteor in GM.GetAllMeteors()) {
 					if (meteor != null && GM != null) {

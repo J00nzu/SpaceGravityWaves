@@ -9,6 +9,8 @@ public class SatelliteCollider : MonoBehaviour {
 	SpriteRenderer sprite;
 	CircleCollider2D coll;
 
+	public bool isAlive = true;
+
 	// Use this for initialization
 	void Start () {
 		GM = FindObjectOfType<GameManager> ();
@@ -16,6 +18,8 @@ public class SatelliteCollider : MonoBehaviour {
 		initialSatellites = satellitesLeft;
 		sprite = GetComponent<SpriteRenderer> ();
 		coll = GetComponent<CircleCollider2D> ();
+
+		isAlive = true;
 	}
 	
 	// Update is called once per frame
@@ -29,6 +33,7 @@ public class SatelliteCollider : MonoBehaviour {
 		if (satellitesLeft == 0) {
 			sprite.enabled = false;
 			coll.enabled = false;
+			isAlive = false;
 		}
 	}
 
@@ -36,6 +41,7 @@ public class SatelliteCollider : MonoBehaviour {
 		satellitesLeft = initialSatellites;
 		sprite.enabled = true;
 		coll.enabled = true;
+		isAlive = true;
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
