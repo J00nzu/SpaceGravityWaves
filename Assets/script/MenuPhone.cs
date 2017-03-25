@@ -80,8 +80,7 @@ public class MenuPhone : MonoBehaviour {
 		SfxVolume.value = 0.5f;
 
 
-		CloseMenu ();
-		CloseLevelSelect ();
+		CloseMenu (false);
 	}
 
 
@@ -96,6 +95,10 @@ public class MenuPhone : MonoBehaviour {
 	}
 
 	public void OpenMenu(){
+		OpenMenu (true);
+	}
+
+	public void OpenMenu(bool sound){
 		MenuObject.SetActive (true);
 		InputH.DeactivateInput ();
 		MusicVolume.value = GameSettings.Get ().music;
@@ -105,16 +108,20 @@ public class MenuPhone : MonoBehaviour {
 		StartCoroutine ("RotateButton");
 
 		MenuState = true;
-		JukeboxScript.PlayClick ();
+		if(sound)JukeboxScript.PlayClick ();
 	}
 
 	public void CloseMenu(){
+		CloseMenu (true);
+	}
+
+	public void CloseMenu(bool sound){
 		MenuObject.SetActive (false);
 		InputH.ActivateInput ();
 		GameSettings.Save ();
 		MenuState = false;
-		CloseLevelSelect ();
-		JukeboxScript.PlayClick ();
+		CloseLevelSelect (sound);
+		if(sound)JukeboxScript.PlayClick ();
 	}
 
 	public bool GetMenuState(){
@@ -131,13 +138,21 @@ public class MenuPhone : MonoBehaviour {
 	}
 
 	public void OpenLevelSelect(){
+		OpenLevelSelect (true);
+	}
+
+	public void OpenLevelSelect(bool sound){
 		LevelSelect.SetActive (true);
-		JukeboxScript.PlayClick ();
+		if(sound)JukeboxScript.PlayClick ();
 	}
 
 	public void CloseLevelSelect(){
+		CloseLevelSelect (true);
+	}
+
+	public void CloseLevelSelect(bool sound){
 		LevelSelect.SetActive (false);
-		JukeboxScript.PlayClick ();
+		if(sound)JukeboxScript.PlayClick ();
 	}
 
 	public void SwitchYearCounter(){
