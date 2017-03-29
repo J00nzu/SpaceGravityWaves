@@ -109,20 +109,20 @@ public class UIScript : MonoBehaviour {
 
 		left.rectTransform.offsetMin = new Vector2 (-10, 0);
 		left.rectTransform.offsetMax = new Vector2(
-			Camera.main.WorldToScreenPoint(new Vector3(GM.LevelLeftBound,0,0)).x/2,
-			Screen.height/2
+			(Camera.main.WorldToScreenPoint(new Vector3(GM.LevelLeftBound,0,0)).x/Screen.width)*getWidth(),
+			getHeight()
 		);
 
-		float orthoWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
+		float orthoWidth = Camera.main.orthographicSize * getWidth() /getHeight();
 
 
 		right.rectTransform.offsetMin = new Vector2 (
-			Camera.main.WorldToScreenPoint(new Vector3(GM.LevelRightBound,0,0)).x/2,
+			(Camera.main.WorldToScreenPoint(new Vector3(GM.LevelRightBound,0,0)).x/Screen.width)*getWidth(),
 			0
 		);
 		right.rectTransform.offsetMax = new Vector2(
-			Screen.width/2,
-			Screen.height/2
+			getWidth(),
+			getHeight()
 		);
 
 	}
@@ -272,6 +272,32 @@ public class UIScript : MonoBehaviour {
 		tutorial.enabled = true;
 
 		input.ActivateInput ();
+	}
+
+
+
+
+	//Width & Height
+
+	Vector2 WidthHeight;
+	RectTransform recto;
+
+	//A bit inefficient i'd say..
+	public Vector2 getWidthHeight(){
+		if (recto==null) {
+			recto = GetComponent<RectTransform> ();
+		}
+
+		WidthHeight = new Vector2 (recto.rect.width, recto.rect.height);
+		return WidthHeight;
+	}
+
+	public float getWidth(){
+		return getWidthHeight ().x;
+	}
+
+	public float getHeight(){
+		return getWidthHeight ().y;
 	}
 
 }
