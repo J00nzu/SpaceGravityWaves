@@ -110,7 +110,6 @@ public class JukeboxScript : MonoBehaviour {
 				if (sVolume < 0) {
 					sVolume = 0;
 				}
-				Debug.Log (sVolume);
 			}
 
 		}
