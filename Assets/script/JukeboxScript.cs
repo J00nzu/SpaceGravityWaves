@@ -150,6 +150,10 @@ public class JukeboxScript : MonoBehaviour {
 			instance.blackHole.Play ();
 	}
 
+	public static void StartFanfare(){
+		
+	}
+
 
 	public void UpdateVolume(){
 		sfxVol = GameSettings.Get ().sfx;

@@ -182,11 +182,11 @@ public class UIScript : MonoBehaviour {
 	IEnumerator FadeVictory(){
 		float a = 0;
 
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (3);
 
 		while (a < 1) {
 			victory.color = new Color (1, 1, 1, a);
-			a += 0.02f;
+			a += 0.005f;
 			if (a > 1)
 				a = 1;
 			yield return null;
