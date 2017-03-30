@@ -45,7 +45,7 @@ public class EarthScript : MonoBehaviour {
 
 
 		if (exp != null) {
-			//exp.Play();
+			exp.Play();
 		}
 
 		if (sprite != null) {
