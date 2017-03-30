@@ -8,6 +8,9 @@ using UnityEngine;
 public static class GameSettings
 {
 
+	public static float DEFAULT_MUSIC_VOL = 0.4f;
+	public static float DEFAULT_SFX_VOL = 0.8f;
+
 	private static readonly string filePath = Application.persistentDataPath + "/settings.dat";
 	private static SettingsObject settingsInstance;
 	private static bool changed = false;
@@ -60,8 +63,8 @@ public static class GameSettings
 
 	private static SettingsObject CreateDefaults(){
 		settingsInstance = new SettingsObject ();
-		settingsInstance.music = 0.4f;
-		settingsInstance.sfx = 0.5f;
+		settingsInstance.music = DEFAULT_MUSIC_VOL;
+		settingsInstance.sfx = DEFAULT_SFX_VOL;
 		settingsInstance.progress = 0;
 		settingsInstance.yearEnabled = true;
 
