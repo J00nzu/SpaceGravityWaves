@@ -12,6 +12,10 @@ public class IndicatorScript : MonoBehaviour {
 
 	GameManager GM;
 
+	float maxSizeDistance = 30;
+	float sizePadding = 0.5f;
+	float minSize = 0.5f;
+	float originalScale;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +35,7 @@ public class IndicatorScript : MonoBehaviour {
 			idc.sprite = newGo.GetComponent<SpriteRenderer> ();
 			idc.target = meteor;
 			newGo.transform.parent = this.transform;
+			originalScale = newGo.transform.localScale.x;
 
 			if (idc.sprite == null) {
 				Debug.LogError ("No SpriteRenderer found in IndicatorPrefab!!!! Skipping.");
@@ -73,6 +78,13 @@ public class IndicatorScript : MonoBehaviour {
 				Vector2 lineEnd = new Vector2 (target.transform.position.x, target.transform.position.y);
 				Vector2 intersect = Vector2.zero;
 
+				//Scale indicator
+				float distanceFromTarget = (indie.target.transform.position - Camera.main.transform.position).magnitude;
+				float targetScale = (1 + sizePadding) - (distanceFromTarget / maxSizeDistance);
+				if (targetScale < minSize) {
+					targetScale = minSize;
+				}
+				indie.gameObject.transform.localScale = new Vector3 (targetScale*originalScale, targetScale*originalScale, 1);
 
 				/**
 				 * WARNING:  Horrible abomination below.
