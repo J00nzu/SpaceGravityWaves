@@ -61,11 +61,15 @@ public class UIScript : MonoBehaviour {
 		if (!tutorial.gameObject.activeInHierarchy) {
 			input.firstPress = false;
 		}
+
+		if (left != null && right != null) {
+			ScaleLeftAndRight ();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		ScaleLeftAndRight ();
 	}
 
 	public void HideTutorial(){
@@ -89,6 +93,38 @@ public class UIScript : MonoBehaviour {
 		StartCoroutine ("IntroEnd");
 		JukeboxScript.PlayClick ();
 		GM.Introing = false;
+	}
+
+	public void ScaleLeftAndRight(){
+		if (left == null || right == null || GM == null
+			|| left.color.a == 0 || right.color.a == 0) {
+			return;
+		}
+
+		left.rectTransform.anchorMin = new Vector2 (0, 0);
+		left.rectTransform.anchorMax = new Vector2 (0, 0);
+
+		right.rectTransform.anchorMin = new Vector2 (0, 0);
+		right.rectTransform.anchorMax = new Vector2 (0, 0);
+
+		left.rectTransform.offsetMin = new Vector2 (-10, 0);
+		left.rectTransform.offsetMax = new Vector2(
+			Camera.main.WorldToScreenPoint(new Vector3(GM.LevelLeftBound,0,0)).x/2,
+			Screen.height/2
+		);
+
+		float orthoWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
+
+
+		right.rectTransform.offsetMin = new Vector2 (
+			Camera.main.WorldToScreenPoint(new Vector3(GM.LevelRightBound,0,0)).x/2,
+			0
+		);
+		right.rectTransform.offsetMax = new Vector2(
+			Screen.width/2,
+			Screen.height/2
+		);
+
 	}
 
 

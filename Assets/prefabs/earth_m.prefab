@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 212032654546516882}
   - component: {fileID: 58316675864049068}
   - component: {fileID: 114605258447730580}
+  - component: {fileID: 114191043218559448}
   m_Layer: 0
   m_Name: moon
   m_TagString: Untagged
@@ -941,6 +942,18 @@ PolygonCollider2D:
       - {x: -0.375, y: -1.4449999}
       - {x: -0.225, y: -1.405}
       - {x: -0.024999999, y: -1.3249999}
+--- !u!114 &114191043218559448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289264703760662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cefe035c8e5c4459b50aec69df0892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114389476561199732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3675,7 +3688,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d2adac6d65ed1f240bb9e1f45a0892c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57f7a0bd3c1d61c448fbee669a3cda7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
