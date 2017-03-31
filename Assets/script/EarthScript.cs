@@ -56,6 +56,10 @@ public class EarthScript : MonoBehaviour {
 			coll.enabled = false;
 		}
 
+		if (Application.isMobilePlatform) {
+			Handheld.Vibrate ();
+		}
+
 		foreach(GameObject go in explo){
 			go.SetActive (true);
 			Rigidbody2D goRig = go.GetComponent<Rigidbody2D> ();
