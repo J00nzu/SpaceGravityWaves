@@ -54,7 +54,7 @@ public class Statistic : MonoBehaviour {
 		} else {
 			GameObject GO = GameObject.Find ("YearCounter");
 			if (GO != null) {
-				yearCounter = GO.GetComponent<Text> ();
+				yearCounter = GO.GetComponentInChildren<Text> ();
 			}
 		}
 	}
