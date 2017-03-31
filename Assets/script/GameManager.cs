@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	InputHandler IHandler;
 
 
-	float winWaitingTime = 6;
+	float winWaitingTime = 10;
 	float loseWaitingTime = 1.5f;
 
 	public static int lvlIndexOffset = 1;
@@ -158,6 +158,9 @@ public class GameManager : MonoBehaviour {
 			if(point!=null)
 				point.earthpoint++;
 			NextLevel = true;
+
+			JukeboxScript.StartFanfare ();
+
 			StartCoroutine ("WaitForNextLevel");
 			//FindObjectOfType<MeteorScript> ().Explode ();
 			//FindObjectOfType<EarthScript> ().Explode ();

@@ -9,7 +9,7 @@ public abstract class DynamicObject : MonoBehaviour {
 	protected Vector3 SavePos;
 	protected bool Alive = true;
 
-	public void StartPlay() {
+	public virtual void StartPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
 		if (rig != null) {
 			rig.bodyType = initialType;
@@ -20,7 +20,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	}
 
-	public void InitPlay() {
+	public virtual void InitPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
 		if (rig != null) {
 			initialType = rig.bodyType;
@@ -29,7 +29,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	}
 
-	public void ResetPlay() {
+	public virtual void ResetPlay() {
 		Rigidbody2D rig = GetComponent<Rigidbody2D> ();
 		Alive = true;
 
@@ -38,7 +38,6 @@ public abstract class DynamicObject : MonoBehaviour {
 			rig.angularVelocity = 0;
 			this.transform.rotation = Quaternion.Euler (Vector3.zero);
 		}
-
 
 		this.transform.position = SavePos;
 
@@ -60,7 +59,7 @@ public abstract class DynamicObject : MonoBehaviour {
 
 	protected abstract void PlayPressed ();
 
-	public void Explode(){
+	public virtual void Explode(){
 		ExplosionSound ();
 
 		ParticleSystem[] exp = GetComponentsInChildren<ParticleSystem> ();
@@ -97,7 +96,7 @@ public abstract class DynamicObject : MonoBehaviour {
 		return Alive;
 	}
 
-	protected void ExplosionSound(){
+	protected virtual void ExplosionSound(){
 		JukeboxScript.PlayExplosion2 ();
 	}
 }

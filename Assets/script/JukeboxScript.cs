@@ -110,7 +110,6 @@ public class JukeboxScript : MonoBehaviour {
 				if (sVolume < 0) {
 					sVolume = 0;
 				}
-				Debug.Log (sVolume);
 			}
 
 		}
@@ -151,20 +150,25 @@ public class JukeboxScript : MonoBehaviour {
 			instance.blackHole.Play ();
 	}
 
+	public static void StartFanfare(){
+		
+	}
+
 
 	public void UpdateVolume(){
 		sfxVol = GameSettings.Get ().sfx;
 		musicVol = GameSettings.Get ().music;
 
-		music1.volume = musicVol;
-		music2.volume = musicVol;
 
-		hit1.volume = sfxVol;
-		hit2.volume = sfxVol;
-		hit3.volume = sfxVol;
-		launch.volume = sfxVol;
-		blackHole.volume = sfxVol;
-		click.volume = sfxVol;
+		if(music1!=null)music1.volume = musicVol;
+		if(music2!=null)music2.volume = musicVol;
+
+		if(hit1!=null)hit1.volume = sfxVol;
+		if(hit2!=null)hit2.volume = sfxVol;
+		if(hit3!=null)hit3.volume = sfxVol;
+		if(launch!=null)launch.volume = sfxVol;
+		if(blackHole!=null)blackHole.volume = sfxVol;
+		if(click!=null)click.volume = sfxVol;
 		//gravity.volume = sfxVol;
 		//shield.volume = sfxVol;
 	}

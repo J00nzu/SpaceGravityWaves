@@ -45,7 +45,7 @@ public class EarthScript : MonoBehaviour {
 
 
 		if (exp != null) {
-			//exp.Play();
+			exp.Play();
 		}
 
 		if (sprite != null) {
@@ -54,6 +54,10 @@ public class EarthScript : MonoBehaviour {
 
 		if (coll != null) {
 			coll.enabled = false;
+		}
+
+		if (Application.isMobilePlatform) {
+			Handheld.Vibrate ();
 		}
 
 		foreach(GameObject go in explo){

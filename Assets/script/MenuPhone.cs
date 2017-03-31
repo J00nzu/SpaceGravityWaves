@@ -28,10 +28,6 @@ public class MenuPhone : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		/**
-		 * TODO find sliders and stuffs here..
-		*/
-
 		MenuObject = GameObject.Find ("MenuContainer").gameObject;
 		MusicVolume = GameObject.Find ("MusicSlider").GetComponent<Slider> ();
 		SfxVolume = GameObject.Find ("SfxSlider").GetComponent<Slider> ();
