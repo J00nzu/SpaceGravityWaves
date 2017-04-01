@@ -151,7 +151,7 @@ public class JukeboxScript : MonoBehaviour {
 	}
 
 	public static void StartFanfare(){
-		
+		instance.StartCoroutine ("VictorySequence");
 	}
 
 
@@ -186,6 +186,41 @@ public class JukeboxScript : MonoBehaviour {
 			}
 		}catch(Exception ex){
 			Debug.Log (ex);
+		}
+	}
+
+	IEnumerator VictorySequence(){
+		music2.Play ();
+		float mus1OrigVol = music1.volume;
+		float scaleVol = 1;
+		float musFadeSpeed = 0.1f;
+
+		while (scaleVol > 0) {
+			scaleVol -=musFadeSpeed;
+
+			if (scaleVol < 0) {
+				scaleVol = 0;
+			}
+
+			music1.volume = scaleVol * mus1OrigVol;
+
+			yield return null;
+		}
+
+		yield return new WaitForSeconds (8);
+
+		musFadeSpeed = 0.01f;
+
+		while (scaleVol < 1) {
+			scaleVol += musFadeSpeed;
+
+			if (scaleVol > 1) {
+				scaleVol = 1;
+			}
+
+			music1.volume = scaleVol * (GameSettings.Get ().music);
+
+			yield return null;
 		}
 	}
 
