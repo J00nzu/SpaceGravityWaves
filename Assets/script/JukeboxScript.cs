@@ -151,7 +151,8 @@ public class JukeboxScript : MonoBehaviour {
 	}
 
 	public static void StartFanfare(){
-		instance.StartCoroutine ("VictorySequence");
+		if(instance != null)
+			instance.StartCoroutine ("VictorySequence");
 	}
 
 
