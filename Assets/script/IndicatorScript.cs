@@ -12,7 +12,7 @@ public class IndicatorScript : MonoBehaviour {
 
 	GameManager GM;
 
-	float maxSizeDistance = 30;
+	float maxSizeDistance = 20;
 	float sizePadding = 0.5f;
 	float minSize = 0.5f;
 	float originalScale;
