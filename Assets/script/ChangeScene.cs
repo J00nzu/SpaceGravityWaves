@@ -6,9 +6,12 @@ public class ChangeScene : MonoBehaviour {
 
 
 	public int scene = 0;
+	public bool onLoad = true;
 	// Use this for initialization
 	void Start () {
-		SceneManager.LoadScene (scene);
+		if (onLoad) {
+			SceneManager.LoadScene (scene);
+		}
 	}
 	
 	// Update is called once per frame

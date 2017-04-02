@@ -62,6 +62,10 @@ public class JukeboxScript : MonoBehaviour {
 			firstUpdate = false;
 		}
 
+		if (GM == null) {
+			return;
+		}
+
 		float gClosestDistance = 999;
 		float gVolume = 0;
 
