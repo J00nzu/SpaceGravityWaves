@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 
 public class GameManager : MonoBehaviour {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
 	List<PlanetScript> planetList = new List<PlanetScript>();
 	List<MeteorScript> meteorList = new List<MeteorScript>();
 
+	int totalTries = 0;
 
 
 	// Use this for initialization
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour {
 		UI.KillTutorialNow ();
 
 		playing = true;
+		totalTries++;
 	}
 
 	public void Pause(){
@@ -114,8 +117,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Restart(){
-		if (point != null) {
-			point.deadpoint++;
+		if (GetStats () != null) {
+			GetStats ().deadpoint++;
 		}
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
 			m.ResetPlay ();
@@ -161,17 +164,27 @@ public class GameManager : MonoBehaviour {
 		if (!NextLevel) {
 
 
-			if(point!=null)
-				point.earthpoint++;
+			if (GetStats () != null) {
+				GetStats ().earthpoint++;
+			}
 			NextLevel = true;
 
 			JukeboxScript.StartFanfare ();
+
+			Analytics.CustomEvent ("victory", new Dictionary<string, object> {
+				{"levelName", SceneManager.GetActiveScene().name},
+				{"levelNumber", SceneManager.GetActiveScene().buildIndex-lvlIndexOffset},
+				{"totalTries", totalTries}
+			});
 
 			StartCoroutine ("WaitForNextLevel");
 			//FindObjectOfType<MeteorScript> ().Explode ();
 			//FindObjectOfType<EarthScript> ().Explode ();
 			//JukeboxScript.PlayExplosion1 ();
 			UI.ShowVictory ();
+
+
+
 		}
 
 
@@ -210,6 +223,14 @@ public class GameManager : MonoBehaviour {
 			new Vector3 (LevelLeftBound, Camera.main.ScreenToWorldPoint(Vector3.zero).y, 0));
 		Gizmos.DrawLine (new Vector3 (LevelLeftBound, Camera.main.orthographicSize, 0),
 			new Vector3 (LevelRightBound, Camera.main.orthographicSize, 0));
+	}
+
+	Statistic GetStats(){
+		if (point == null) {
+			point = FindObjectOfType<Statistic> ();
+		}
+
+		return point;
 	}
 
 }

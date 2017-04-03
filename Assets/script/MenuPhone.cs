@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class MenuPhone : MonoBehaviour {
 	GameObject MenuObject;
@@ -54,6 +55,9 @@ public class MenuPhone : MonoBehaviour {
 				im.color = new Color (0, 0, 0, 0);
 				bu.interactable = true;
 				bu.onClick.AddListener (() => {
+					Analytics.CustomEvent ("loadlevel", new Dictionary<string, object> {
+						{"levelIndex", lvButt.index}
+					});
 					GM.ChangeLevel(lvButt.index);
 					JukeboxScript.PlayClick ();
 				});

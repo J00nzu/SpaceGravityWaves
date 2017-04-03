@@ -3,6 +3,8 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
 
 
 public static class GameSettings
@@ -43,6 +45,12 @@ public static class GameSettings
 					settingsInstance = (SettingsObject)bf.Deserialize(file);
 					Debug.Log ("Settings loaded from : " + filePath);
 					Debug.Log(settingsInstance);
+
+					Analytics.CustomEvent ("settingsLoad", new Dictionary<string, object> {
+						{"musicVol", settingsInstance.music},
+						{"sfxVol", settingsInstance.sfx},
+						{"yearCounter", settingsInstance.yearEnabled}
+					});
 				}catch(Exception ex){
 					Debug.LogWarning(ex);
 				}
@@ -59,6 +67,7 @@ public static class GameSettings
 			Debug.LogWarning ("No settings file found : " + filePath);
 		}
 		loaded = true;
+
 	}
 
 	private static SettingsObject CreateDefaults(){
