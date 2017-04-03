@@ -34,6 +34,13 @@ public class IntroScript : MonoBehaviour {
 		cam.orthographicSize = startOrthoSize;
 		orthoSize = startOrthoSize;
 
+
+		float newAspectRatio = UI.getWidth()/UI.getHeight();
+
+		float aspectRatioDivided = newAspectRatio / CameraScalerScript.NORMAL_ASPECT_RATIO;
+		Debug.Log ("normalAspect= " + CameraScalerScript.NORMAL_ASPECT_RATIO + " newAspect= " + newAspectRatio + " aspectDivided= " + aspectRatioDivided);
+		targetOrthoSize /= aspectRatioDivided;
+
 		GM.Introing = true;
 	}
 	
