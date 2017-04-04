@@ -41,7 +41,7 @@ public class MenuPhone : MonoBehaviour {
 
 		GM = FindObjectOfType<GameManager> ();
 
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 11; i++) {
 			GameObject gob = GameObject.Find ("ButtonLvl"+i);
 			Button bu = gob.GetComponent<Button> ();
 			Image im = gob.GetComponent<Image> ();

@@ -45,6 +45,9 @@ public class Statistic : MonoBehaviour {
 			GM = FindObjectOfType<GameManager> ();
 			firstUpdate = false;
 		}
+		if (GM == null) {
+			return;
+		}
 
 		if (GM.playing && !GM.NextLevel) {
 			year += Time.deltaTime * yearsPerSecond;

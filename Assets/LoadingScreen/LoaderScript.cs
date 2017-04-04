@@ -21,6 +21,15 @@ public class LoaderScript : MonoBehaviour {
 		if (Application.platform == RuntimePlatform.OSXPlayer) {
 			Screen.SetResolution (1280, 720, false);
 		}
+
+		if (Application.isMobilePlatform) {
+			Screen.autorotateToLandscapeLeft = true;
+			Screen.autorotateToLandscapeRight = true;
+			Screen.autorotateToPortrait = false;
+			Screen.autorotateToPortraitUpsideDown = false;
+			Screen.orientation = ScreenOrientation.AutoRotation;
+		}
+
 		StartCoroutine ("LevelLoadRoutine");
 	}
 
