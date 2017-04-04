@@ -133,12 +133,12 @@ public class UIScript : MonoBehaviour {
 			input.DeactivateInput ();
 			levelName.color = new Color (1, 1, 1, 1);
 
-			yield return new WaitForSeconds (2);
+			yield return new WaitForSeconds (1);
 			float a = 1;
 
 			while (a > 0) {
 				levelName.color = new Color (1, 1, 1, a);
-				a -= 0.01f;
+				a -= 0.02f;
 				yield return null;
 			}
 			levelName.enabled = false;
@@ -182,11 +182,11 @@ public class UIScript : MonoBehaviour {
 	IEnumerator FadeVictory(){
 		float a = 0;
 
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (5);
 
 		while (a < 1) {
 			victory.color = new Color (1, 1, 1, a);
-			a += 0.005f;
+			a += 0.01f;
 			if (a > 1)
 				a = 1;
 			yield return null;

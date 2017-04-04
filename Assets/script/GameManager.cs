@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	InputHandler IHandler;
 
 
-	float winWaitingTime = 10;
+	float winWaitingTime = 8;
 	float loseWaitingTime = 1.5f;
 
 	public static int lvlIndexOffset = 1;
