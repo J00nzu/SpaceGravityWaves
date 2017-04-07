@@ -195,7 +195,6 @@ public class JukeboxScript : MonoBehaviour {
 	}
 
 	IEnumerator VictorySequence(){
-		music2.Play ();
 		float mus1OrigVol = music1.volume;
 		float scaleVol = 1;
 		float musFadeSpeed = 0.1f;
@@ -212,7 +211,7 @@ public class JukeboxScript : MonoBehaviour {
 			yield return null;
 		}
 
-		yield return new WaitForSeconds (8);
+		yield return new WaitForSeconds (12);
 
 		musFadeSpeed = 0.01f;
 
