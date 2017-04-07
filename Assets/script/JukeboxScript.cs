@@ -211,7 +211,7 @@ public class JukeboxScript : MonoBehaviour {
 			yield return null;
 		}
 
-		yield return new WaitForSeconds (9);
+		yield return new WaitForSeconds (7);
 
 		musFadeSpeed = 0.01f;
 
