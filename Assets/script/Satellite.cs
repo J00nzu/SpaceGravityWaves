@@ -35,6 +35,13 @@ public class Satellite : DynamicObject {
 		UpdateBeam ();
 	}
 
+	void Update(){
+		if(biimiSprite != null){
+			biimiSprite.color = new Color (1, 1, 1, 0.25f + Mathf.PingPong (Time.realtimeSinceStartup/3.0f, 0.75f));
+		}
+		
+	}
+
 	protected override void PlayPressed(){
 		
 	}
@@ -105,7 +112,6 @@ public class Satellite : DynamicObject {
 			coll2.enabled = true;
 		}
 
-		Debug.Log (biimiSprite + " biimiSprite");
 		if (biimiSprite != null) {
 			biimiSprite.enabled = true;
 		}
