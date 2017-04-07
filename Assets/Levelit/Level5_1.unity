@@ -219,16 +219,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 212390612536705794, guid: e2748693d6eadba4eb6813bdaa1fa6eb,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 212302443715759696, guid: e2748693d6eadba4eb6813bdaa1fa6eb,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2748693d6eadba4eb6813bdaa1fa6eb, type: 2}
   m_IsPrefabParent: 0
@@ -271,16 +261,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 212484076576865648, guid: 658a57f5ed59b78459ce283eefb14063,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 212426079952001012, guid: 658a57f5ed59b78459ce283eefb14063,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 658a57f5ed59b78459ce283eefb14063, type: 2}
   m_IsPrefabParent: 0
@@ -322,16 +302,6 @@ Prefab:
     - target: {fileID: 4068332407709234, guid: a6879b4dd88357546882b802604d86f2, type: 2}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 212161796925383762, guid: a6879b4dd88357546882b802604d86f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212687606584398062, guid: a6879b4dd88357546882b802604d86f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6879b4dd88357546882b802604d86f2, type: 2}
@@ -378,26 +348,6 @@ Prefab:
     - target: {fileID: 1619656555171116, guid: 405981a1c53bdde4e92bd90753117b8a, type: 2}
       propertyPath: m_Name
       value: asteroidiKeha
-      objectReference: {fileID: 0}
-    - target: {fileID: 114442230881373546, guid: 405981a1c53bdde4e92bd90753117b8a,
-        type: 2}
-      propertyPath: speed
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 212654948625822650, guid: 405981a1c53bdde4e92bd90753117b8a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 212205640345017982, guid: 405981a1c53bdde4e92bd90753117b8a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 212412426624488152, guid: 405981a1c53bdde4e92bd90753117b8a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 405981a1c53bdde4e92bd90753117b8a, type: 2}
@@ -651,11 +601,11 @@ Prefab:
         type: 3}
     - target: {fileID: 4959861126118862, guid: 39c3d33391d88ef47ba310781464a3b7, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.1478094
+      value: -0.1736482
       objectReference: {fileID: 0}
     - target: {fileID: 4959861126118862, guid: 39c3d33391d88ef47ba310781464a3b7, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9890159
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 4959861126118862, guid: 39c3d33391d88ef47ba310781464a3b7, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1002,16 +952,6 @@ Prefab:
     - target: {fileID: 4942205175598678, guid: 7eceada1365970a4baccfc7c6f26c1a0, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 212794899373019086, guid: 7eceada1365970a4baccfc7c6f26c1a0,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 212160954569143952, guid: 7eceada1365970a4baccfc7c6f26c1a0,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7eceada1365970a4baccfc7c6f26c1a0, type: 2}
