@@ -672,11 +672,6 @@ Prefab:
       propertyPath: m_Name
       value: BlackHoleTo (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 212262080351664218, guid: 51b96836c8ff4e2409a7154ba9a13b1f,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51b96836c8ff4e2409a7154ba9a13b1f, type: 2}
   m_IsPrefabParent: 0
@@ -902,15 +897,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1432174757366382, guid: 6546e9d9e637cd5409f809c737d185ec, type: 2}
-      propertyPath: m_Name
-      value: BlackHoleFrom (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 114784798277748830, guid: 6546e9d9e637cd5409f809c737d185ec,
         type: 2}
       propertyPath: To
       value: 
       objectReference: {fileID: 2097442263}
+    - target: {fileID: 1432174757366382, guid: 6546e9d9e637cd5409f809c737d185ec, type: 2}
+      propertyPath: m_Name
+      value: BlackHoleFrom (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6546e9d9e637cd5409f809c737d185ec, type: 2}
   m_IsPrefabParent: 0

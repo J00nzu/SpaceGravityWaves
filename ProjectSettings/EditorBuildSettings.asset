@@ -28,17 +28,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levelit/Level1_2.unity
   - enabled: 1
-    path: Assets/Levelit/Level4_1.unity
+    path: Assets/Levelit/Level2_1.unity
   - enabled: 1
-    path: Assets/Levelit/Level4_2.unity
+    path: Assets/Levelit/Level2_2.unity
   - enabled: 1
     path: Assets/Levelit/Level3_1.unity
   - enabled: 1
     path: Assets/Levelit/Level3_2.unity
   - enabled: 1
-    path: Assets/Levelit/Level2_1.unity
+    path: Assets/Levelit/Level4_1.unity
   - enabled: 1
-    path: Assets/Levelit/Level2_2.unity
+    path: Assets/Levelit/Level4_2.unity
   - enabled: 1
     path: Assets/Levelit/Level5_1.unity
   - enabled: 1
