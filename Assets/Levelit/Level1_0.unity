@@ -411,6 +411,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4959861126118862, guid: 39c3d33391d88ef47ba310781464a3b7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.19080901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959861126118862, guid: 39c3d33391d88ef47ba310781464a3b7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9816272
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799234485298160, guid: 39c3d33391d88ef47ba310781464a3b7,
+        type: 2}
+      propertyPath: angle
+      value: -22
+      objectReference: {fileID: 0}
+    - target: {fileID: 58681426434818474, guid: 39c3d33391d88ef47ba310781464a3b7,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799234485298160, guid: 39c3d33391d88ef47ba310781464a3b7,
+        type: 2}
+      propertyPath: meteoritForce
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39c3d33391d88ef47ba310781464a3b7, type: 2}
   m_IsPrefabParent: 0
