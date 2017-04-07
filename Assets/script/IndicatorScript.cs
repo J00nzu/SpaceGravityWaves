@@ -71,6 +71,7 @@ public class IndicatorScript : MonoBehaviour {
 
 				//Rotate indicator
 				indie.gameObject.transform.right = target.transform.position.normalized;
+				indie.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,0,indie.gameObject.transform.rotation.eulerAngles.z));
 
 				//Move indicator
 
