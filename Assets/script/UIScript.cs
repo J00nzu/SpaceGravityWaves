@@ -234,6 +234,7 @@ public class UIScript : MonoBehaviour {
 	}
 
 	IEnumerator IntroWait(){
+		input.DeactivateInput ();
 
 		yield return new WaitForSeconds (2);
 
@@ -252,6 +253,7 @@ public class UIScript : MonoBehaviour {
 	}
 
 	IEnumerator IntroEnd(){
+
 		if (menp != null) {
 			menp.ShowMenuControls ();
 		}
