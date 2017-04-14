@@ -17,6 +17,10 @@ public class FinalSceneScript : MonoBehaviour {
 				{"earthPoint", stat.earthpoint}
 			});
 		}
+
+		//reset level progress to 0
+		GameSettings.Get ().lastLevelBuildIndex = 0;
+
 		ChangeToMenu ();
 	}
 
