@@ -110,8 +110,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Restart(){
-		if(point!=null)
+		if (point != null) {
 			point.deadpoint++;
+		}
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
 			m.ResetPlay ();
 		}
