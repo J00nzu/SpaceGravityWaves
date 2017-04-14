@@ -18,6 +18,7 @@ public class InputHandler : MonoBehaviour {
 
 	Vector3 LastMp;
 	int LastTouchID=0;
+	float maxBreakDistance = 4f;
 
 
 	public bool IsPlanetDragged(){
@@ -94,7 +95,6 @@ public class InputHandler : MonoBehaviour {
 				MousePressed = true;
 				LastTouchID = touche.fingerId;
 				Mp = Camera.main.ScreenToWorldPoint (touche.position);
-				LastMp = Mp;
 			} else {
 				bool touchIdFound = false;
 
@@ -103,7 +103,6 @@ public class InputHandler : MonoBehaviour {
 					if (LastTouchID == touche.fingerId) {
 						MousePressed = true;
 						Mp = Camera.main.ScreenToWorldPoint (touche.position);
-						LastMp = Mp;
 						touchIdFound = true;
 						break;
 					}
@@ -117,7 +116,11 @@ public class InputHandler : MonoBehaviour {
 				}
 			}
 
-
+			if ((Mp - LastMp).magnitude > maxBreakDistance) {
+				MousePressed = false;
+				Mp = LastMp;
+				LastTouchID = 0;
+			}
 
 
 		} else {
@@ -127,14 +130,16 @@ public class InputHandler : MonoBehaviour {
 		}
 
 
+
+
 		float Mx = Mp.x;
 		float My = Mp.y;
 
 		if (!GM.Introing) {
-			int highestLayerOrder=0;
+			int highestLayerOrder = 0;
 
 			if (dragged == null) {
-				if (MousePressed  && !inputCooldown) {
+				if (MousePressed && !inputCooldown) {
 					foreach (PlanetScript p in GM.GetAllPlanets()) {
 						float r = p.GetComponent<SpriteRenderer> ().sprite.bounds.extents.y;
 						Vector3 off = p.transform.position - new Vector3 (Mx, My, 0);
@@ -174,8 +179,11 @@ public class InputHandler : MonoBehaviour {
 			}
 
 
+		} else if (MousePressed) {
+			SpaceBarButton ();
 		}
 
+		LastMp = Mp;
 	}
 
 	void OnDrawGizmos(){
