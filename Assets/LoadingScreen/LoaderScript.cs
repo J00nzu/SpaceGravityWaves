@@ -36,10 +36,17 @@ public class LoaderScript : MonoBehaviour {
 	IEnumerator LevelLoadRoutine(){
 		fadeOut.CrossFadeAlpha (0, 6, true);
 
-		yield return new WaitForSeconds(4);
+		yield return new WaitForSeconds(5);
+
+		int lastLevelIndex = GameSettings.Get ().lastLevelBuildIndex;
 
 		if (!Application.isEditor) {
-			asyLoad = SceneManager.LoadSceneAsync (levelIndexToLoad);
+			if (lastLevelIndex == 0) {
+				asyLoad = SceneManager.LoadSceneAsync (levelIndexToLoad);
+			} else {
+				asyLoad = SceneManager.LoadSceneAsync (lastLevelIndex);
+			}
+
 		}
 	}
 

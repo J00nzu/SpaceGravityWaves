@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour {
 		int lvlIndex = SceneManager.GetActiveScene ().buildIndex - lvlIndexOffset;
 		if (GameSettings.Get ().progress < lvlIndex) {
 			GameSettings.Get ().progress++;
+			GameSettings.Get ().lastLevelBuildIndex = SceneManager.GetActiveScene ().buildIndex;
 			GameSettings.Save ();
 		}
 

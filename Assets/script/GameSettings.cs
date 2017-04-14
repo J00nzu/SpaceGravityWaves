@@ -67,6 +67,7 @@ public static class GameSettings
 		settingsInstance.sfx = DEFAULT_SFX_VOL;
 		settingsInstance.progress = 0;
 		settingsInstance.yearEnabled = true;
+		settingsInstance.lastLevelBuildIndex = 0;
 
 		return settingsInstance;
 	}
@@ -160,10 +161,22 @@ public class SettingsObject{
 		}
 	}
 
+	private int _lastLevel;
+	public int lastLevelBuildIndex{
+		get{
+			return  _lastLevel;
+		}
+		set{
+			_lastLevel = value;
+			GameSettings.NotifyChange ();
+		}
+	}
+
 	public override string ToString ()
 	{
-		return string.Format ("[SettingsObject: music={0}, sfx={1}, progress={2}, deadPoints={3}, earthPoints={4}]", music, sfx, progress, deadPoints, earthPoints);
+		return string.Format ("[SettingsObject: music={0}, sfx={1}, progress={2}, deadPoints={3}, earthPoints={4}, yearEnabled={5}, lastLevel={6}]", music, sfx, progress, deadPoints, earthPoints, yearEnabled, lastLevelBuildIndex);
 	}
+	
 	
 	
 }
