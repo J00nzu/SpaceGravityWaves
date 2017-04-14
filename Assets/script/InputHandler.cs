@@ -116,7 +116,7 @@ public class InputHandler : MonoBehaviour {
 				}
 			}
 
-			if ((Mp - LastMp).magnitude > maxBreakDistance) {
+			if (((Mp - LastMp).magnitude > maxBreakDistance) && dragged != null) {
 				MousePressed = false;
 				Mp = LastMp;
 				LastTouchID = 0;
@@ -179,8 +179,6 @@ public class InputHandler : MonoBehaviour {
 			}
 
 
-		} else if (MousePressed) {
-			SpaceBarButton ();
 		}
 
 		LastMp = Mp;
