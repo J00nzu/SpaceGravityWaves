@@ -72,7 +72,19 @@ public class UIScript : MonoBehaviour {
 		ScaleLeftAndRight ();
 	}
 
+	// Dirtiest hack of all dirty hacks ever in the existence of the human race
+	// See BUG#4: Jos tokkii liian aikasin nii tutoriaali borkkaa
+	public void KillTutorialNow(){
+		if (!HasTutorial ()) {
+			return;
+		}
+		if (tutorial.enabled) {
+			tutorial.enabled = false;
+		}
+	}
+
 	public void HideTutorial(){
+		
 		StartCoroutine ("FadeTutorial");
 	}
 

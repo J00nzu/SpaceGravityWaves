@@ -99,6 +99,10 @@ public class GameManager : MonoBehaviour {
 		foreach (DynamicObject m in FindObjectsOfType<DynamicObject>()) {
 			m.StartPlay ();
 		}
+
+		//See: dirty hack
+		UI.KillTutorialNow ();
+
 		playing = true;
 	}
 
