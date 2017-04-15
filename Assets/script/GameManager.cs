@@ -50,11 +50,14 @@ public class GameManager : MonoBehaviour {
 		UI = FindObjectOfType<UIScript> ();
 
 		int lvlIndex = SceneManager.GetActiveScene ().buildIndex - lvlIndexOffset;
+
 		if (GameSettings.Get ().progress < lvlIndex) {
 			GameSettings.Get ().progress++;
-			GameSettings.Get ().lastLevelBuildIndex = SceneManager.GetActiveScene ().buildIndex;
-			GameSettings.Save ();
 		}
+
+		GameSettings.Get ().lastLevelBuildIndex = SceneManager.GetActiveScene ().buildIndex;
+		GameSettings.Save ();
+
 
 		if (lvlIndex == 1) {
 			Statistic[] stats = FindObjectsOfType<Statistic> ();
