@@ -9,15 +9,19 @@ public class FollowMouse : MonoBehaviour {
 	Vector3 targetPos;
 	float AndroidXScale, AndroidYScale;
 
+	const float AndroidMultiplier = 2;
+
 	void Start(){
-		AndroidYScale = Camera.main.orthographicSize;
-		AndroidXScale = AndroidXScale * (Screen.width / Screen.height);
+		
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (Application.isMobilePlatform) {
-			//targetPos = new Vector3 (Input.acceleration.x*AndroidXScale, Input.acceleration.y*AndroidYScale, transform.position.z) / divisor;
+			AndroidYScale = Camera.main.orthographicSize;
+			AndroidXScale = AndroidXScale * (Screen.width / Screen.height);
+
+			targetPos = (new Vector3 (Input.acceleration.x*AndroidXScale, Input.acceleration.y*AndroidYScale, transform.position.z) / divisor) * AndroidMultiplier;
 		} else {
 			Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition) / divisor;
 			targetPos = new Vector3(pos.x, pos.y, transform.position.z);
