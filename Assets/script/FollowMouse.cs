@@ -9,7 +9,7 @@ public class FollowMouse : MonoBehaviour {
 	Vector3 targetPos;
 	float AndroidXScale, AndroidYScale;
 
-	const float AndroidMultiplier = 2;
+	const float AndroidMultiplier = 20;
 
 	void Start(){
 		
@@ -19,7 +19,7 @@ public class FollowMouse : MonoBehaviour {
 	void Update () {
 		if (Application.isMobilePlatform) {
 			AndroidYScale = Camera.main.orthographicSize;
-			AndroidXScale = AndroidXScale * (Screen.width / Screen.height);
+			AndroidXScale = AndroidYScale * (Screen.width / Screen.height);
 
 			targetPos = (new Vector3 (Input.acceleration.x*AndroidXScale, Input.acceleration.y*AndroidYScale, transform.position.z) / divisor) * AndroidMultiplier;
 		} else {

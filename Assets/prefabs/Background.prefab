@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a9024b6754c78419587dc2861c695c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  divisor: 10
+  divisor: 50
 --- !u!212 &212275815640803760
 SpriteRenderer:
   m_ObjectHideFlags: 1
