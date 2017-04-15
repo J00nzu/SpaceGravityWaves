@@ -74,9 +74,6 @@ public class LoaderScript : MonoBehaviour {
 						Vector3 off = grabo.transform.position - hit.point;
 						this.offset = new Vector3 (off.x, off.y, 0);
 
-						Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-						Debug.Log("Offset is " + offset); // ensure you picked right object
-
 					}
 				}
 			}
