@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Threading;
+using System.Timers;
 
 public class JukeboxScript : MonoBehaviour {
 
 	public AudioClip[] levelMusic;
+	public AudioClip[] explosionVarios;
 
 	GameManager GM;
 	SatelliteCollider shieldObject;
 	AudioSource music1, music2, hit1, hit2, hit3,
 	launch, blackHole, click, gravity, shield;
 	static JukeboxScript instance;
+	static System.Random r = new System.Random ();
 
 	private float sfxVol;
 	private float musicVol;
@@ -130,8 +134,13 @@ public class JukeboxScript : MonoBehaviour {
 	}
 
 	public static void PlayExplosion2(){
-		if(instance != null)
+		if (instance != null) {
+			if(instance.explosionVarios.Length > 0){
+				int i = r.Next () % instance.explosionVarios.Length;
+				instance.hit2.clip = instance.explosionVarios [i];
+			}
 			instance.hit2.Play ();
+		}
 	}
 
 	public static void PlayExplosion3(){
@@ -166,7 +175,7 @@ public class JukeboxScript : MonoBehaviour {
 
 
 		if(music1!=null)music1.volume = musicVol;
-		if(music2!=null)music2.volume = musicVol;
+		if(music2!=null)music2.volume = Mathf.Clamp01(musicVol * 2);
 
 		if(hit1!=null)hit1.volume = sfxVol;
 		if(hit2!=null)hit2.volume = sfxVol;
@@ -189,15 +198,29 @@ public class JukeboxScript : MonoBehaviour {
 				music1.clip = newClip;
 				music1.Play();
 			}
+
+			if(sceneIndex+1 == levelMusic.Length){
+				StartCoroutine("ChangeToFirstSongAfterCurrent");
+			}
+
 		}catch(Exception ex){
 			Debug.Log (ex);
 		}
+	}
+
+	IEnumerator ChangeToFirstSongAfterCurrent(){
+		yield return new WaitForSecondsRealtime (music1.clip.length);
+
+		music1.clip = levelMusic[0];
+		music1.Play();
 	}
 
 	IEnumerator VictorySequence(){
 		float mus1OrigVol = music1.volume;
 		float scaleVol = 1;
 		float musFadeSpeed = 0.1f;
+
+		music2.Play ();
 
 		while (scaleVol > 0) {
 			scaleVol -=musFadeSpeed;
