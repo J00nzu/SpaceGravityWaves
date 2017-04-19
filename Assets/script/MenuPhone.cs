@@ -184,6 +184,11 @@ public class MenuPhone : MonoBehaviour {
 		MenuButton.SetActive (true);
 	}
 
+	public void GT_beeb_O(){
+		GameSettings.Save ();
+		Application.Quit ();
+	}
+
 	IEnumerator RotateButton(){
 		for (int i = 0; i < 15; i++) {
 			MenuButton.transform.Rotate (new Vector3(0,0,-2f));
