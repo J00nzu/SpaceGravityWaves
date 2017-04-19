@@ -554,7 +554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: meteorites launched
+  m_Text: Asteroids launched
 --- !u!222 &852447502
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -743,7 +743,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Years took
+  m_Text: Years
 --- !u!222 &1136879796
 CanvasRenderer:
   m_ObjectHideFlags: 0
